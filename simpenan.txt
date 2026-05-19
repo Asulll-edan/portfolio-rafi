@@ -1,0 +1,49 @@
+ <svg viewBox="0 0 300 330" fill="none" xmlns="http://www.w3.org/2000/svg" width="180" height="180">
+    {/* Green top arc */}
+    <path
+      d="M150 8 C126 8 100 28 82 55 C74 67 68 80 64 92 L98 92 C102 80 108 68 116 58 C127 45 139 36 150 32 C161 36 173 45 184 58 C192 68 198 80 202 92 L236 92 C232 80 226 67 218 55 C200 28 174 8 150 8Z"
+      fill="#2BA84A"
+    />
+    {/* Left yellow arm */}
+    <path d="M64 92 L98 92 L150 188 L150 275 L64 92Z" fill="#F7B32B" />
+    {/* Right orange arm */}
+    <path d="M202 92 L236 92 L150 275 L150 188 L202 92Z" fill="#E8711A" />
+    {/* Yellow inner */}
+    <path d="M115 92 L150 158 L150 188 L98 92Z" fill="#F7B32B" />
+    {/* Orange inner */}
+    <path d="M185 92 L150 158 L150 188 L202 92Z" fill="#E8711A" />
+    {/* Outline */}
+    <path
+      d="M150 8 C126 8 100 28 82 55 C74 67 68 80 64 92 L150 275 L236 92 C232 80 226 67 218 55 C200 28 174 8 150 8Z"
+      stroke="#111"
+      strokeWidth="6"
+      fill="none"
+      strokeLinejoin="round"
+    />
+    <path d="M115 92 L150 160 L185 92" stroke="#111" strokeWidth="5" fill="none" strokeLinejoin="round" />
+    <path d="M150 160 L150 275" stroke="#111" strokeWidth="5" fill="none" />
+    {/* YOGYA text */}
+    <text
+      x="150" y="305"
+      textAnchor="middle"
+      fontFamily="Arial Black, sans-serif"
+      fontWeight="900"
+      fontSize="50"
+      fill="#D42B2B"
+      letterSpacing="-1"
+    >
+      YOGYA
+    </text>
+    {/* GROUP text */}
+    <text
+      x="150" y="326"
+      textAnchor="middle"
+      fontFamily="Arial, sans-serif"
+      fontWeight="700"
+      fontSize="14"
+      fill="#2BA84A"
+      letterSpacing="9"
+    >
+      GROUP
+    </text>
+  </svg>

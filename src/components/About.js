@@ -4,6 +4,7 @@ import Image from "next/image";
 
 import { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { FaFlutter, FaGolang, FaDocker} from 'react-icons/fa6';
 
 function AnimatedCounter({ target, suffix = '' }) {
   const ref = useRef(null);
@@ -64,11 +65,11 @@ function TiltCard({ children }) {
   );
 }
 
-const stats = [
-  { label: 'Projects Completed', value: 24, suffix: '+' },
-  { label: 'Years Experience', value: 3, suffix: '+' },
-  { label: 'Happy Clients', value: 15, suffix: '+' },
-];
+// const stats = [
+//   { label: 'Projects Completed', value: 24, suffix: '+' },
+//   { label: 'Years Experience', value: 3, suffix: '+' },
+//   { label: 'Happy Clients', value: 15, suffix: '+' },
+// ];
 
 const containerVariants = {
   hidden: {},
@@ -127,7 +128,7 @@ export default function About() {
             textTransform: 'uppercase',
           }}>01 / About Me</span>
           <h2 style={{
-            fontFamily: "'Syne', sans-serif",
+            fontFamily: "'syne', sans-serif",
             fontSize: 'clamp(32px, 5vw, 56px)',
             fontWeight: 800,
             color: '#F0F4F8',
@@ -247,7 +248,7 @@ export default function About() {
                     fontFamily: "'JetBrains Mono', monospace",
                     fontSize: '11px',
                     color: 'var(--accent-cyan)',
-                  }}>📍 Based in Indonesia</span>
+                  }}>Bandung, Indonesia</span>
                 </motion.div>
               </div>
             </TiltCard>
@@ -259,77 +260,111 @@ export default function About() {
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
           >
-            <motion.p variants={itemVariants} style={{
-              fontFamily: "'Space Grotesk', sans-serif",
-              fontSize: 'clamp(15px, 2vw, 17px)',
-              lineHeight: 1.8,
-              color: 'var(--text-muted)',
-              marginBottom: '24px',
-            }}>
-              I'm a passionate Frontend Developer and UI Designer crafting digital experiences
-              that live at the intersection of{' '}
-              <span style={{ color: 'var(--accent-gold)', fontWeight: 600 }}>clean code</span>{' '}
-              and{' '}
-              <span style={{ color: 'var(--accent-cyan)', fontWeight: 600 }}>stunning design</span>.
-            </motion.p>
+        <motion.p
+  variants={itemVariants}
+  style={{
+    fontFamily: "'Space Grotesk', sans-serif",
+    fontSize: 'clamp(15px, 2vw, 17px)',
+    lineHeight: 1.8,
+    color: 'var(--text-muted)',
+    marginBottom: '24px',
+  }}
+>
+  I'm a 17-year-old Vocational High School (SMK) student based in Bandung,
+  Indonesia. I love creating modern websites, enjoy working with clients,
+  and always stay patient during projects — except when bugs suddenly appear.
+</motion.p>
 
-            <motion.p variants={itemVariants} style={{
-              fontFamily: "'Space Grotesk', sans-serif",
-              fontSize: 'clamp(15px, 2vw, 17px)',
-              lineHeight: 1.8,
-              color: 'var(--text-muted)',
-              marginBottom: '40px',
-            }}>
-              With expertise in modern web technologies and a keen eye for visual details,
-              I build products that aren't just functional — they're memorable experiences
-              users enjoy interacting with.
-            </motion.p>
+<motion.p
+  variants={itemVariants}
+  style={{
+    fontFamily: "'Space Grotesk', sans-serif",
+    fontSize: 'clamp(15px, 2vw, 17px)',
+    lineHeight: 1.8,
+    color: 'var(--text-muted)',
+    marginBottom: '40px',
+  }}
+>
+  I specialize in{' '}
+  <span style={{ color: 'var(--accent-gold)', fontWeight: 600 }}>
+    Laravel
+  </span>{' '}
+  development, building clean, responsive, and modern fullstack web applications.
+  And several other technologies such as:
+</motion.p>
 
             {/* Stats */}
-            <motion.div
-              variants={itemVariants}
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(3, 1fr)',
-                gap: '16px',
-                marginBottom: '40px',
-              }}
-            >
-              {stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  style={{
-                    background: 'var(--glass-bg)',
-                    border: '1px solid var(--glass-border)',
-                    borderRadius: '12px',
-                    padding: '20px 12px',
-                    textAlign: 'center',
-                    backdropFilter: 'blur(12px)',
-                  }}
-                >
-                  <div style={{
-                    fontFamily: "'Syne', sans-serif",
-                    fontSize: 'clamp(24px, 4vw, 36px)',
-                    fontWeight: 800,
-                    color: 'var(--accent-gold)',
-                    textShadow: '0 0 20px rgba(255,195,0,0.3)',
-                    lineHeight: 1,
-                    marginBottom: '6px',
-                  }}>
-                    <AnimatedCounter target={stat.value} suffix={stat.suffix} />
-                  </div>
-                  <div style={{
-                    fontFamily: "'Space Grotesk', sans-serif",
-                    fontSize: '11px',
-                    color: 'var(--text-muted)',
-                    letterSpacing: '0.05em',
-                    lineHeight: 1.3,
-                  }}>
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </motion.div>
+           <motion.div
+  variants={itemVariants}
+  style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '16px',
+    marginBottom: '40px',
+  }}
+>
+  {[
+    {
+      label: 'Flutter',
+      icon: ( <img
+        src="assets/icons/flutter.png"
+        alt="Flutter"
+        style={{ width: 40, height: 40, objectFit:'contain' }}
+      />),
+    },
+   {
+    label: 'AJAX(JavaScript)',
+    icon: ( <img
+        src="assets/icons/ajax.png"
+        alt="AJAX"
+        style={{ width: 60, height: 40, objectFit:'contain' }}
+      />),
+  },
+    {
+      label: 'Golang',
+      icon: <FaGolang size={34} color="#00ADD8" />,
+    },
+    {
+      label: 'Docker',
+      icon: <FaDocker size={34} color="#2496ED" />,
+    },
+  ].map((item) => (
+    <div
+      key={item.label}
+      style={{
+        background: 'var(--glass-bg)',
+        border: '1px solid var(--glass-border)',
+        borderRadius: '12px',
+        padding: '20px 12px',
+        textAlign: 'center',
+        backdropFilter: 'blur(12px)',
+      }}
+    >
+      <div
+        style={{
+          marginBottom: '10px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        {item.icon}
+      </div>
+
+      <div
+        style={{
+          fontFamily: "'Space Grotesk', sans-serif",
+          fontSize: '11px',
+          color: 'var(--text-muted)',
+          letterSpacing: '0.05em',
+          lineHeight: 1.3,
+        }}
+      >
+        {item.label}
+      </div>
+    </div>
+  ))}
+</motion.div>
 
             {/* Download CV */}
             <motion.div variants={itemVariants}>

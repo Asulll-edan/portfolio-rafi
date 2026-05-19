@@ -109,7 +109,8 @@ export default function Navbar() {
               cursor: 'none',
             }}
           >
-            <span style={{ color: 'var(--accent-gold)' }}>M</span>SR
+            <span style={{ color: 'var(--accent-gold)' }}>M</span>SR 
+            {/* ganti sama logo */}
           </motion.button>
 
           {/* Desktop Links */}
@@ -149,7 +150,7 @@ export default function Navbar() {
             })}
 
             <motion.button
-              onClick={() => scrollTo('#contact')}
+              onClick={() => scrollTo('#intern-history')}
               whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(255,195,0,0.4)' }}
               whileTap={{ scale: 0.95 }}
               style={{
@@ -166,7 +167,7 @@ export default function Navbar() {
                 letterSpacing: '0.02em',
               }}
             >
-              Hire Me
+              Intern History
             </motion.button>
           </div>
 

@@ -92,7 +92,7 @@ export default function RootLayout({ children }) {
     <html lang="id">
       <head>
         <title>Muhammad Sultan Rafi — Portfolio</title>
-        <meta name="description" content="Portfolio Muhammad Sultan Rafi — Frontend Developer, UI Designer, Creative Coder" />
+        <meta name="description" content="Portfolio Muhammad Sultan Rafi — Fullstack Developer, Back end coder, Laravel" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </head>

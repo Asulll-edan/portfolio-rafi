@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic';
 // Dynamic import Three.js canvas - SSR false
 const ThreeCanvas = dynamic(() => import('./HeroCanvas'), { ssr: false });
 
-const subtitles = ['Frontend Developer', 'UI Designer', 'Creative Coder'];
+const subtitles = ['Junior Fullstack Developer', 'Back-end Coder', 'Sleepy Coder'];
 
 function TypewriterGlitch({ text }) {
   const [displayed, setDisplayed] = useState('');
