@@ -35,9 +35,10 @@ function DoneCard({ intern, index, isInView }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 32 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      initial={{ opacity: 0, y: 32, rotate: Math.random() * 2 - 1 }}
+      animate={isInView ? { opacity: 1, y: 0, rotate: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.12, ease: [0.23, 1, 0.32, 1] }}
+      whileHover={{ rotate: -1, scale: 1.02 }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -48,12 +49,30 @@ function DoneCard({ intern, index, isInView }) {
         justifyContent: 'center',
         minHeight: '260px',
         cursor: 'default',
+        background: hovered ? 'rgba(0,53,102,0.45)' : 'rgba(0,29,61,0.5)',
+        border: `2px solid ${hovered ? 'rgba(255,195,0,0.45)' : 'rgba(255,195,0,0.12)'}`,
+        borderRadius: '8px',
+        padding: '28px 20px',
+        boxShadow: hovered ? '4px 4px 0 rgba(255,195,0,0.18)' : '2px 2px 0 rgba(0,0,0,0.2)',
+        transition: 'all 0.2s ease',
       }}
     >
-      {/* Logo — greyscale + dim on hover, stays visible */}
+      {/* Corner tick marks saat hover */}
+      {hovered && (
+        <>
+          <svg style={{ position: 'absolute', top: 6, left: 6, width: 12, height: 12 }} viewBox="0 0 10 10" fill="none">
+            <path d="M1 5 L1 1 L5 1" stroke="#FFC300" strokeWidth="1.5" strokeLinecap="round" opacity="0.6" />
+          </svg>
+          <svg style={{ position: 'absolute', bottom: 6, right: 6, width: 12, height: 12 }} viewBox="0 0 10 10" fill="none">
+            <path d="M9 5 L9 9 L5 9" stroke="#FFC300" strokeWidth="1.5" strokeLinecap="round" opacity="0.6" />
+          </svg>
+        </>
+      )}
+
+      {/* Logo */}
       <motion.div
         animate={{
-          opacity: hovered ? 0.25 : 1,
+          opacity: hovered ? 0.18 : 1,
           filter: hovered ? 'grayscale(1) blur(1px)' : 'grayscale(0) blur(0px)',
           scale: hovered ? 0.95 : 1,
         }}
@@ -63,7 +82,7 @@ function DoneCard({ intern, index, isInView }) {
         <Logo />
       </motion.div>
 
-      {/* Hover info — overlaid centered on top of logo */}
+      {/* Hover info */}
       <AnimatePresence>
         {hovered && (
           <motion.div
@@ -74,10 +93,7 @@ function DoneCard({ intern, index, isInView }) {
             transition={{ duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
             style={{
               position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
+              top: 0, left: 0, right: 0, bottom: 0,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
@@ -85,14 +101,20 @@ function DoneCard({ intern, index, isInView }) {
               textAlign: 'center',
               gap: '5px',
               pointerEvents: 'none',
-              padding: '0 12px',
+              padding: '0 16px',
             }}
           >
             <motion.span
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.03, duration: 0.22, ease: 'easeOut' }}
-              style={{ fontSize: '15px', fontWeight: 600, color: '#F0F4F8', lineHeight: 1.3 }}
+              transition={{ delay: 0.03, duration: 0.22 }}
+              style={{
+                fontFamily: "'Permanent Marker', cursive",
+                fontSize: '16px',
+                color: '#F0F4F8',
+                lineHeight: 1.3,
+                textShadow: '2px 2px 0 rgba(0,0,0,0.3)',
+              }}
             >
               {intern.company}
             </motion.span>
@@ -100,8 +122,13 @@ function DoneCard({ intern, index, isInView }) {
             <motion.span
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.07, duration: 0.22, ease: 'easeOut' }}
-              style={{ fontSize: '13px', color: 'rgba(240,244,248,0.7)' }}
+              transition={{ delay: 0.07, duration: 0.22 }}
+              style={{
+                fontFamily: "'Patrick Hand', cursive",
+                fontSize: '14px',
+                color: '#FFC300',
+                fontWeight: 700,
+              }}
             >
               {intern.role}
             </motion.span>
@@ -109,8 +136,13 @@ function DoneCard({ intern, index, isInView }) {
             <motion.span
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.11, duration: 0.22, ease: 'easeOut' }}
-              style={{ fontSize: '12px', color: 'rgba(240,244,248,0.5)', fontFamily: 'monospace', letterSpacing: '0.04em' }}
+              transition={{ delay: 0.11, duration: 0.22 }}
+              style={{
+                fontFamily: "'Kalam', cursive",
+                fontSize: '12px',
+                color: 'rgba(240,244,248,0.55)',
+                letterSpacing: '0.04em',
+              }}
             >
               {intern.period}
             </motion.span>
@@ -118,8 +150,12 @@ function DoneCard({ intern, index, isInView }) {
             <motion.span
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.14, duration: 0.22, ease: 'easeOut' }}
-              style={{ fontSize: '11px', color: 'rgba(240,244,248,0.4)', fontFamily: 'monospace' }}
+              transition={{ delay: 0.14, duration: 0.22 }}
+              style={{
+                fontFamily: "'Kalam', cursive",
+                fontSize: '11px',
+                color: 'rgba(240,244,248,0.4)',
+              }}
             >
               {intern.duration}
             </motion.span>
@@ -127,22 +163,23 @@ function DoneCard({ intern, index, isInView }) {
             <motion.div
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.18, duration: 0.22, ease: 'easeOut' }}
-              style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', justifyContent: 'center', marginTop: '6px' }}
+              transition={{ delay: 0.18, duration: 0.22 }}
+              style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', justifyContent: 'center', marginTop: '8px' }}
             >
               {intern.tags.map((tag, i) => (
                 <motion.span
                   key={tag}
                   initial={{ opacity: 0, scale: 0.85 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.2 + i * 0.06, duration: 0.18, ease: 'easeOut' }}
+                  transition={{ delay: 0.2 + i * 0.06, duration: 0.18 }}
                   style={{
+                    fontFamily: "'Kalam', cursive",
                     fontSize: '11px',
                     padding: '3px 10px',
-                    borderRadius: '100px',
-                    border: '1px solid rgba(255,255,255,0.15)',
-                    color: 'rgba(240,244,248,0.55)',
-                    fontFamily: 'monospace',
+                    borderRadius: '6px',
+                    border: '1.5px dashed rgba(255,195,0,0.3)',
+                    color: 'rgba(240,244,248,0.6)',
+                    background: 'rgba(255,195,0,0.04)',
                   }}
                 >
                   {tag}
@@ -160,15 +197,20 @@ function SoonCard({ index, isInView }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 32 }}
-      animate={isInView ? { opacity: 0.35, y: 0 } : {}}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.12, ease: [0.23, 1, 0.32, 1] }}
       style={{
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        gap: '10px',
+        gap: '12px',
         minHeight: '260px',
+        background: 'rgba(0,29,61,0.3)',
+        border: '2px dashed rgba(255,195,0,0.15)',
+        borderRadius: '8px',
+        padding: '28px 20px',
+        opacity: 0.5,
       }}
     >
       <motion.div
@@ -178,27 +220,33 @@ function SoonCard({ index, isInView }) {
           width: '52px',
           height: '52px',
           borderRadius: '50%',
-          border: '1px dashed rgba(255,255,255,0.2)',
+          border: '2px dashed rgba(255,195,0,0.25)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
         }}
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="9" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" />
-          <path d="M12 7v5l3 3" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" strokeLinecap="round" />
+          <circle cx="12" cy="12" r="9" stroke="rgba(255,195,0,0.5)" strokeWidth="1.5" />
+          <path d="M12 7v5l3 3" stroke="rgba(255,195,0,0.5)" strokeWidth="1.5" strokeLinecap="round" />
         </svg>
       </motion.div>
+
       <span style={{
+        fontFamily: "'Kalam', cursive",
         fontSize: '10px',
         color: 'rgba(240,244,248,0.4)',
         letterSpacing: '0.2em',
         textTransform: 'uppercase',
-        fontFamily: 'monospace',
       }}>
         Next PKL
       </span>
-      <span style={{ fontSize: '13px', color: 'rgba(240,244,248,0.4)', fontWeight: 500 }}>
+
+      <span style={{
+        fontFamily: "'Patrick Hand', cursive",
+        fontSize: '14px',
+        color: 'rgba(240,244,248,0.4)',
+      }}>
         Coming soon
       </span>
     </motion.div>
@@ -220,40 +268,75 @@ export default function InternHistory() {
         overflow: 'hidden',
       }}
     >
+      {/* Big watermark */}
+      <div style={{
+        position: 'absolute', top: '5%', right: '3%',
+        fontFamily: "'Permanent Marker', cursive",
+        fontSize: 'clamp(100px, 18vw, 180px)',
+        color: 'rgba(255,195,0,0.04)',
+        userSelect: 'none', pointerEvents: 'none', lineHeight: 1,
+      }}>04</div>
+
+      {/* Doodle scattered stars */}
+      {[
+        { x: '88%', y: '15%', size: 20, color: 'rgba(255,195,0,0.2)', rot: 15 },
+        { x: '4%',  y: '20%', size: 16, color: 'rgba(33,158,188,0.2)', rot: -20 },
+        { x: '92%', y: '70%', size: 18, color: 'rgba(255,195,0,0.15)', rot: 30 },
+      ].map((s, i) => (
+        <svg key={i} style={{
+          position: 'absolute', left: s.x, top: s.y,
+          width: s.size, height: s.size,
+          transform: `rotate(${s.rot}deg)`, pointerEvents: 'none',
+        }} viewBox="0 0 24 24" fill="none">
+          <path d="M12 2 L14 9 L21 9 L15 14 L17 21 L12 17 L7 21 L9 14 L3 9 L10 9 Z"
+            stroke={s.color} strokeWidth="1.5" strokeLinejoin="round"
+            fill={s.color.replace('0.2', '0.05').replace('0.15', '0.05')} />
+        </svg>
+      ))}
+
+      {/* Doodle BG lines */}
+      <svg style={{
+        position: 'absolute', inset: 0, width: '100%', height: '100%',
+        pointerEvents: 'none', opacity: 0.03,
+      }} fill="none">
+        {[...Array(6)].map((_, i) => (
+          <line key={i}
+            x1="0" y1={`${i * 18}%`}
+            x2="100%" y2={`${i * 18 + 9}%`}
+            stroke="#FFC300" strokeWidth="1" strokeDasharray="8 6" />
+        ))}
+      </svg>
+
       <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
 
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
+          transition={{ duration: 0.55 }}
           style={{ marginBottom: '56px' }}
         >
           <span style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: '11px',
+            fontFamily: "'Kalam', cursive",
+            fontSize: '15px',
             color: '#219EBC',
-            letterSpacing: '0.3em',
-            textTransform: 'uppercase',
-          }}>
-            03 / Experience
-          </span>
+            letterSpacing: '0.15em',
+          }}>✏️ 04 / Experience</span>
+
           <h2 style={{
-            fontFamily: "'Syne', sans-serif",
-            fontSize: 'clamp(32px, 5vw, 54px)',
-            fontWeight: 800,
+            fontFamily: "'Permanent Marker', cursive",
+            fontSize: 'clamp(30px, 5vw, 54px)',
             color: '#F0F4F8',
-            margin: '8px 0 0',
-            letterSpacing: '-0.025em',
-            lineHeight: 1.05,
+            marginTop: '8px',
+            textShadow: '3px 3px 0 rgba(0,0,0,0.2)',
           }}>
             Intern{' '}
-            <span style={{
-              background: 'linear-gradient(135deg, #FFC300 20%, #219EBC 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}>
+            <span style={{ color: '#FFC300', position: 'relative' }}>
               History
+              <svg style={{ position: 'absolute', bottom: '-6px', left: 0, width: '100%', height: '8px' }}
+                viewBox="0 0 100 8" preserveAspectRatio="none" fill="none">
+                <path d="M0 5 Q25 1 50 5 Q75 9 100 5" stroke="#FFC300" strokeWidth="2.5" strokeLinecap="round" />
+              </svg>
             </span>
           </h2>
         </motion.div>
@@ -261,9 +344,9 @@ export default function InternHistory() {
         {/* Cards */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-          gap: '32px',
-          alignItems: 'center',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+          gap: '20px',
+          alignItems: 'stretch',
         }}>
           {internData.map((intern, i) =>
             intern.status === 'done' ? (

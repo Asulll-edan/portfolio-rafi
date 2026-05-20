@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 
-// Real brand SVG logos inline
+// Real brand SVG logos inline — dari skill 1
 const logos = {
   Laravel: () => (
     <svg viewBox="0 0 50 52" fill="none" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
@@ -11,9 +11,11 @@ const logos = {
     </svg>
   ),
   PHP: () => (
-    <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" width="28" height="22">
-      <path d="M64 33.039c-33.74 0-61.094 13.862-61.094 30.961S30.26 94.961 64 94.961 125.094 81.099 125.094 64 97.74 33.039 64 33.039zm-14.552 45.55H38.42l2.7-13.837H30.494l-2.7 13.837H16.767l7.566-38.73h11.027l-2.622 13.827h10.626l2.622-13.827H58.62zm32.957-4.422c-2.503 5.698-7.44 8.222-13.797 8.222h-7.425l-2.226 11.372H47.93l7.566-38.73h18.272c7.171 0 11.136 4.119 9.54 11.605l-.903 7.531zm-7.38-5.004c.376-2.247.376-3.67-2.128-3.67h-5.627l-1.946 9.97h5.027c2.503 0 3.756-1.127 4.257-3.17zm43.374-15.072-2.7 13.837h-5.027l-2.503 12.36h-10.327l2.503-12.36h-5.128l2.7-13.837h-2.7l-1.946 9.97h-5.928l2.7-13.837h34.356z" fill="#777BB3"/>
-    </svg>
+   <img
+    src="assets/icons/PHP-logo.png"
+    alt="AJAX"
+    style={{ width: 40, height: 20, objectFit: 'contain' }}
+  />
   ),
   'Node.js': () => (
     <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
@@ -55,12 +57,12 @@ const logos = {
     </svg>
   ),
   AJAX: () => (
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
-      <circle cx="12" cy="12" r="9.5" stroke="#FFC300" strokeWidth="1.5"/>
-      <path d="M9 12h6M13 9.5l2.5 2.5L13 14.5" stroke="#FFC300" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M11 9l-2.5 3L11 15" stroke="#219EBC" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  ),
+  <img
+    src="assets/icons/ajax.png"
+    alt="AJAX"
+    style={{ width: 40, height: 20, objectFit: 'contain' }}
+  />
+),
   'HTML & CSS': () => (
     <svg viewBox="0 0 52 30" xmlns="http://www.w3.org/2000/svg" width="36" height="22">
       <path d="M0 0l4.5 25.6L13 28l8.5-2.4L26 0H0z" fill="#E44D26"/>
@@ -84,55 +86,50 @@ const logos = {
     </svg>
   ),
   Flutter: () => (
-    <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
-      <path fill="#3fb6d3" d="M12.3 64.2L76.3 0h39.4L32.1 83.6z"/>
-      <path fill="#27aacd" d="M76.3 128h39.4L81.6 93.9l34.1-34.8H76.3L42.2 93.5z"/>
-      <path fill="#19599a" d="M81.6 93.9l-20-20-19.4 19.6 19.4 19.6z"/>
-      <linearGradient id="fl-a" x1="75.6" y1="85" x2="42.5" y2="118" gradientUnits="userSpaceOnUse">
-        <stop offset="0" stopColor="#1b4e93"/>
-        <stop offset=".63" stopColor="#1a5497"/>
-        <stop offset="1" stopColor="#195a9b"/>
-      </linearGradient>
-      <path fill="url(#fl-a)" d="M62.1 107.5l19.5-13.6-19.4-19.6-19.5 19.6z"/>
-    </svg>
+      <img
+    src="assets/icons/flutter.png"
+    alt="AJAX"
+    style={{ width: 60, height: 40, objectFit: 'contain' }}
+  />
   ),
-  Dart: () => (
-    <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
-      <path fill="#00B4AB" d="M90.8 0H37.3L0 37.3v53.3l37.3 37.3h53.3L128 90.6V37.3z"/>
-      <path fill="#fff" d="M70.3 96.2H44V71.4l26.3-26.3h25.5v25.5L70.3 96.2zM57.7 31.8H32.2v25.5l25.5-25.5z"/>
-    </svg>
-  ),
+ Dart: () => (
+  <img
+    src="assets/icons/Dart_logo.png"
+    alt="Dart"
+    style={{ width: 25, height: 25, objectFit: 'contain' }}
+  />
+),
   PostgreSQL: () => (
-    <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
-      <path fill="#336791" d="M93.809 92.112c.785-6.533.55-7.492 5.416-6.433l1.235.108c3.742.17 8.637-.602 11.513-1.938 6.191-2.873 9.861-7.668 3.758-6.409-13.924 2.873-14.881-1.842-14.881-1.842 14.703-21.815 20.849-49.508 15.543-56.287-14.47-18.489-39.517-9.746-39.936-9.504l-.134.025c-2.751-.571-5.83-.911-9.291-.967-6.301-.103-11.082 1.652-14.709 4.402 0 0-44.683-18.409-42.604 23.151.442 8.841 12.672 66.898 27.26 49.362 5.332-6.412 10.484-11.834 10.484-11.834 2.558 1.699 5.622 2.567 8.834 2.255l.249-.212c-.078.796-.044 1.575.099 2.497-3.757 4.199-2.653 4.936-10.166 6.482-7.602 1.566-3.136 4.355-.221 5.084 3.535.884 11.712 2.136 17.238-5.598l-.22.882c1.474 1.18 1.375 8.477 1.583 13.69.209 5.214.558 10.13 1.621 13.004 1.063 2.876 2.319 10.261 12.192 8.14 8.252-1.764 14.455-4.338 15.054-28.165"/>
-      <path fill="#fff" d="M85.807 14.804c1.077.217 1.903.573 1.903.573s-1.26.616-3.36 3.197c-.9 1.11-1.79 2.26-2.622 3.454-1.484 2.125-2.893 4.297-4.124 6.542-2.447 4.437-4.47 9.247-5.724 14.248-.623 2.5-1.063 5.054-1.222 7.623-.077 1.282-.077 2.577.026 3.857.036.447.07.893.14 1.337l.18.85c.103.43.299.863.479 1.286.105.253.243.501.366.751l.195.37.293.359c.194.24.384.478.59.706l.625.594.289.231.313.2c.422.261.844.518 1.272.75l1.303.617c.882.395 1.791.73 2.709 1.04 1.838.615 3.738 1.097 5.666 1.481 1.934.38 3.896.661 5.876.82-.069-.07-.147-.148-.226-.231-3.108-3.163-3.879-6.904-3.879-6.904-.17 3.498.375 6.527 1.244 9.084l-4.196-.793c-.453-3.174-.618-6.445-.524-9.724-.107-.134-.22-.273-.32-.406-.78-1.019-1.368-2.158-1.723-3.353l-.113-.36c-.119-.394-.25-.909-.347-1.387l-.14-.803c-.052-.379-.099-.759-.123-1.14-.069-1.07-.049-2.144.039-3.212.176-2.136.604-4.247 1.178-6.313 1.176-4.133 2.982-8.098 5.165-11.833 1.088-1.867 2.24-3.704 3.485-5.492.625-.894 1.281-1.771 1.955-2.638z"/>
-    </svg>
+     <img
+    src="assets/icons/pgsql.png"
+    alt="AJAX"
+    style={{ width: 50, height: 30, objectFit: 'contain' }}
+  />
   ),
   MySQL: () => (
-    <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" width="28" height="22">
-      <path fill="#00618A" d="M2 5.3h21.1L40.4 47l18.4-41.7H80V60H65.6V22.6L46.1 60H35L15.3 22.6V60H2zM84.7 5.3h15.5l18 54.7H103l-3.5-10.7H79.9L76.4 60H61.7zm-1.3 33h14.3l-7.1-22.1z"/>
-      <path fill="#E48E00" d="M117.7 51.8v8.5h-8.5v-8.5zM2 65.6h12.1l27.4 37.9V65.6H55v57.1H42.8L15.4 84.9v37.8H2zm60.3 0h29c13.9 0 22 8.4 22 28.8 0 21.1-8.8 28.3-22.6 28.3H62.3zm13.3 10.8v33.6h14c7.7 0 10.4-5.4 10.4-16.5 0-11.9-2.7-17.1-11-17.1z"/>
-    </svg>
+     <img
+    src="assets/icons/mysql.png"
+    alt="AJAX"
+    style={{ width: 60, height: 40, objectFit: 'contain' }}
+  />
   ),
-  DBeaver: () => (
-    <svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
-      <rect width="128" height="128" rx="24" fill="#3E3E40"/>
-      <ellipse cx="64" cy="68" rx="36" ry="20" fill="#9B72CF" opacity="0.7"/>
-      <ellipse cx="64" cy="54" rx="36" ry="20" fill="#B48FE0"/>
-      <ellipse cx="64" cy="40" rx="36" ry="20" fill="#C8A2E8"/>
-      <ellipse cx="64" cy="40" rx="22" ry="11" fill="#8B5FBF" opacity="0.5"/>
-      <circle cx="76" cy="35" r="5" fill="#FFC300"/>
-      <circle cx="52" cy="44" r="3" fill="#fff" opacity="0.5"/>
-    </svg>
-  ),
+ DBeaver: () => (
+  <img
+    src="assets/icons/DBeaver_logo.png"
+    alt="DBeaver"
+    style={{ width: 40, height: 40, objectFit: 'contain' }}
+  />
+),
   Docker: () => (
-    <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" width="28" height="22">
-      <path fill="#019BC6" d="M124.8 52.1c-4.3-2.5-10-2.8-14.8-1.4-.6-5.2-4-9.7-8-12.9l-1.6-1.3-1.4 1.6c-2.6 3.1-3.4 8.3-3 12.3-1.5-.9-3.5-1.3-5.2-1.3H2l-.3 1.9c-.9 6.3 0 14.3 4.5 19.8 4.1 5 9.9 7.5 17.8 7.5 16.9 0 29.4-7.8 35.3-22 4.1.2 8.3.1 11.6-2.1 3.1-2 5-5.1 5.8-9.5h1l.1 1.3c.1 3.7.9 9.9 4.5 13.4l1.5 1.4 1.5-1.4c3.1-2.9 4.9-7.6 5.5-13.5 2.8.7 5.5 2.3 7.2 4.5 3.3 4.4 3.7 10.7 2.7 15.6l-.3 1.6h1.6c3.1 0 7.5-.9 10-3.6 2.4-2.6 3.2-6.5 2.9-12.1z"/>
-      <path fill="#019BC6" d="M27 55H15c-.6 0-1 .4-1 1v11c0 .6.4 1 1 1h12c.6 0 1-.4 1-1V56c0-.6-.4-1-1-1zm15 0H30c-.6 0-1 .4-1 1v11c0 .6.4 1 1 1h12c.6 0 1-.4 1-1V56c0-.6-.4-1-1-1zm15 0H45c-.6 0-1 .4-1 1v11c0 .6.4 1 1 1h12c.6 0 1-.4 1-1V56c0-.6-.4-1-1-1zm15 0H60c-.6 0-1 .4-1 1v11c0 .6.4 1 1 1h12c.6 0 1-.4 1-1V56c0-.6-.4-1-1-1zM27 40H15c-.6 0-1 .4-1 1v11c0 .6.4 1 1 1h12c.6 0 1-.4 1-1V41c0-.6-.4-1-1-1zm15 0H30c-.6 0-1 .4-1 1v11c0 .6.4 1 1 1h12c.6 0 1-.4 1-1V41c0-.6-.4-1-1-1zm15 0H45c-.6 0-1 .4-1 1v11c0 .6.4 1 1 1h12c.6 0 1-.4 1-1V41c0-.6-.4-1-1-1zm15 0H60c-.6 0-1 .4-1 1v11c0 .6.4 1 1 1h12c.6 0 1-.4 1-1V41c0-.6-.4-1-1-1zM42 25H30c-.6 0-1 .4-1 1v11c0 .6.4 1 1 1h12c.6 0 1-.4 1-1V26c0-.6-.4-1-1-1zm15 0H45c-.6 0-1 .4-1 1v11c0 .6.4 1 1 1h12c.6 0 1-.4 1-1V26c0-.6-.4-1-1-1z"/>
-    </svg>
+    <img
+    src="assets/icons/Docker_logo.png"
+    alt="AJAX"
+    style={{ width: 60, height: 40, objectFit: 'contain' }}
+  />
   ),
 };
 
+// Kategori & skill names dari skill 1
 const skillCategories = [
   {
     key: 'backend',
@@ -148,7 +145,7 @@ const skillCategories = [
   },
   {
     key: 'mobile',
-    label: 'Mobile',
+    label: 'Mobile ',
     color: '#FFC300',
     skills: ['Flutter', 'Dart'],
   },
@@ -166,81 +163,76 @@ const skillCategories = [
   },
 ];
 
-function SkillCard({ name, color, index }) {
+// SkillCard — style dari skill 2 (doodle: 2px border, boxShadow offset, corner ticks, Patrick Hand font)
+function SkillCard({ name, color, index, inView }) {
   const [hovered, setHovered] = useState(false);
   const Logo = logos[name];
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10, transition: { duration: 0.15 } }}
-      transition={{ duration: 0.35, delay: index * 0.07, ease: [0.23, 1, 0.32, 1] }}
+      initial={{ opacity: 0, y: 20, rotate: Math.random() * 2 - 1 }}
+      animate={inView ? { opacity: 1, y: 0, rotate: 0 } : {}}
+      transition={{ duration: 0.45, delay: index * 0.07 }}
+      whileHover={{ rotate: -1, scale: 1.03 }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        background: hovered ? 'rgba(0,53,102,0.5)' : 'rgba(0,29,61,0.28)',
-        border: `1px solid ${hovered ? color + '50' : 'rgba(255,195,0,0.09)'}`,
-        borderRadius: '16px',
-        padding: '18px 20px',
+        background: hovered ? 'rgba(0,53,102,0.45)' : 'rgba(0,29,61,0.5)',
+        border: `2px solid ${hovered ? color + '55' : 'rgba(255,195,0,0.12)'}`,
+        borderRadius: '8px',
+        padding: '16px 18px',
         display: 'flex',
         alignItems: 'center',
-        gap: '16px',
-        cursor: 'default',
-        transition: 'all 0.22s ease',
-        backdropFilter: 'blur(12px)',
-        boxShadow: hovered
-          ? `0 8px 28px rgba(0,0,0,0.3), inset 0 1px 0 ${color}18`
-          : 'inset 0 1px 0 rgba(255,255,255,0.03)',
+        gap: '14px',
+        transition: 'all 0.2s',
+        boxShadow: hovered ? `4px 4px 0 ${color}22` : '2px 2px 0 rgba(0,0,0,0.2)',
+        cursor: 'none',
         position: 'relative',
-        overflow: 'hidden',
       }}
     >
-      {/* hover glow */}
+
+      
+      {/* Corner tick marks — dari skill 2 */}
       {hovered && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.2 }}
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background: `radial-gradient(ellipse at 20% 50%, ${color}0a 0%, transparent 65%)`,
-            pointerEvents: 'none',
-          }}
-        />
+        <>
+          <svg style={{ position: 'absolute', top: 4, left: 4, width: 10, height: 10 }} viewBox="0 0 10 10" fill="none">
+            <path d="M1 5 L1 1 L5 1" stroke={color} strokeWidth="1.5" strokeLinecap="round" opacity="0.6" />
+          </svg>
+          <svg style={{ position: 'absolute', bottom: 4, right: 4, width: 10, height: 10 }} viewBox="0 0 10 10" fill="none">
+            <path d="M9 5 L9 9 L5 9" stroke={color} strokeWidth="1.5" strokeLinecap="round" opacity="0.6" />
+          </svg>
+        </>
       )}
 
-      {/* logo box */}
+      {/* Logo box */}
       <div style={{
         width: '42px',
         height: '42px',
-        borderRadius: '12px',
+        borderRadius: '8px',
         background: hovered ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.04)',
-        border: `1px solid ${hovered ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.05)'}`,
+        border: `1.5px solid ${hovered ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.05)'}`,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         flexShrink: 0,
-        transition: 'all 0.22s',
+        transition: 'all 0.2s',
       }}>
         {Logo && <Logo />}
       </div>
 
-      {/* name */}
+      {/* Name — font dari skill 2 */}
       <span style={{
-        fontFamily: "'DM Sans', 'Syne', sans-serif",
-        fontSize: '14px',
-        fontWeight: 500,
-        color: hovered ? '#F0F4F8' : 'rgba(240,244,248,0.6)',
-        transition: 'color 0.2s',
-        letterSpacing: '-0.01em',
+        fontFamily: "'Patrick Hand', cursive",
+        fontSize: '15px',
+        fontWeight: hovered ? 700 : 400,
+        color: hovered ? '#F0F4F8' : 'rgba(240,244,248,0.75)',
+        transition: 'all 0.2s',
         flex: 1,
       }}>
         {name}
       </span>
 
-      {/* accent dot */}
+      {/* Accent dot */}
       <motion.div
         animate={{ opacity: hovered ? 1 : 0, scale: hovered ? 1 : 0.4 }}
         transition={{ duration: 0.18 }}
@@ -274,60 +266,71 @@ export default function Skills() {
         overflow: 'hidden',
       }}
     >
-      {/* ambient glows */}
+      {/* Big watermark — dari skill 2 */}
       <div style={{
-        position: 'absolute', top: '35%', right: '10%',
-        width: '480px', height: '480px', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(33,158,188,0.055) 0%, transparent 65%)',
-        pointerEvents: 'none',
-      }} />
-      <div style={{
-        position: 'absolute', bottom: '10%', left: '5%',
-        width: '380px', height: '380px', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(255,195,0,0.04) 0%, transparent 65%)',
-        pointerEvents: 'none',
-      }} />
+        position: 'absolute', top: '5%', left: '2%',
+        fontFamily: "'Permanent Marker', cursive",
+        fontSize: 'clamp(100px, 18vw, 180px)',
+        color: 'rgba(33,158,188,0.04)',
+        userSelect: 'none', pointerEvents: 'none', lineHeight: 1,
+      }}>02</div>
+
+      {/* Doodle scattered stars — dari skill 2 */}
+      {[
+        { x: '90%', y: '10%', size: 20, color: 'rgba(255,195,0,0.2)', rot: 15 },
+        { x: '95%', y: '50%', size: 16, color: 'rgba(33,158,188,0.2)', rot: -20 },
+        { x: '2%', y: '80%', size: 18, color: 'rgba(255,195,0,0.15)', rot: 30 },
+      ].map((s, i) => (
+        <svg key={i} style={{
+          position: 'absolute', left: s.x, top: s.y,
+          width: s.size, height: s.size,
+          transform: `rotate(${s.rot}deg)`, pointerEvents: 'none',
+        }} viewBox="0 0 24 24" fill="none">
+          <path d="M12 2 L14 9 L21 9 L15 14 L17 21 L12 17 L7 21 L9 14 L3 9 L10 9 Z"
+            stroke={s.color} strokeWidth="1.5" strokeLinejoin="round"
+            fill={s.color.replace('0.2', '0.05').replace('0.15', '0.05')} />
+        </svg>
+      ))}
 
       <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
 
-        {/* Header */}
+        {/* Header — style dari skill 2 */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
+          transition={{ duration: 0.55 }}
           style={{ marginBottom: '52px' }}
         >
           <span style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: '11px',
+            fontFamily: "'Kalam', cursive",
+            fontSize: '15px',
             color: '#219EBC',
-            letterSpacing: '0.3em',
-            textTransform: 'uppercase',
-          }}>02 / Skills</span>
+            letterSpacing: '0.15em',
+          }}>✏️ 02 / Skills</span>
           <h2 style={{
-            fontFamily: "'Syne', sans-serif",
-            fontSize: 'clamp(32px, 5vw, 54px)',
-            fontWeight: 800,
+            fontFamily: "'Permanent Marker', cursive",
+            fontSize: 'clamp(30px, 5vw, 54px)',
             color: '#F0F4F8',
-            margin: '8px 0 0',
-            letterSpacing: '-0.025em',
-            lineHeight: 1.05,
+            marginTop: '8px',
+            textShadow: '3px 3px 0 rgba(0,0,0,0.2)',
           }}>
             My{' '}
-            <span style={{
-              background: 'linear-gradient(135deg, #FFC300 20%, #219EBC 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}>Stack</span>
+            <span style={{ color: '#FFC300', position: 'relative' }}>
+              Stack
+              <svg style={{ position: 'absolute', bottom: '-6px', left: 0, width: '100%', height: '8px' }}
+                viewBox="0 0 100 8" preserveAspectRatio="none" fill="none">
+                <path d="M0 5 Q25 1 50 5 Q75 9 100 5" stroke="#FFC300" strokeWidth="2.5" strokeLinecap="round" />
+              </svg>
+            </span>
           </h2>
         </motion.div>
 
-        {/* Tabs */}
+        {/* Tabs — notebook tab style dari skill 2 */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.45, delay: 0.12 }}
-          style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '32px' }}
+          style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '0' }}
         >
           {skillCategories.map((cat) => {
             const isActive = activeTab === cat.key;
@@ -335,21 +338,21 @@ export default function Skills() {
               <motion.button
                 key={cat.key}
                 onClick={() => setActiveTab(cat.key)}
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.96 }}
+                whileHover={{ y: -3, rotate: -1 }}
+                whileTap={{ scale: 0.95 }}
                 style={{
-                  background: isActive ? cat.color : 'rgba(0,29,61,0.4)',
-                  border: `1px solid ${isActive ? cat.color : 'rgba(255,195,0,0.1)'}`,
-                  borderRadius: '8px',
-                  padding: '9px 22px',
-                  fontFamily: "'DM Sans', sans-serif",
-                  fontSize: '13px',
-                  fontWeight: 600,
-                  color: isActive ? '#001D3D' : 'rgba(240,244,248,0.45)',
+                  background: isActive ? cat.color : 'rgba(0,29,61,0.6)',
+                  border: `2px solid ${isActive ? cat.color : 'rgba(255,255,255,0.08)'}`,
+                  borderRadius: '8px 8px 0 0',
+                  padding: '10px 20px',
+                  fontFamily: "'Kalam', cursive",
+                  fontSize: '15px',
+                  fontWeight: isActive ? 700 : 400,
+                  color: isActive ? '#001D3D' : 'rgba(240,244,248,0.6)',
                   cursor: 'pointer',
-                  transition: 'all 0.2s ease',
-                  backdropFilter: 'blur(8px)',
-                  letterSpacing: '0.01em',
+                  transition: 'all 0.2s',
+                  boxShadow: isActive ? `0 -3px 0 ${cat.color}44` : 'none',
+                  transform: isActive ? 'translateY(0)' : 'translateY(3px)',
                 }}
               >
                 {cat.label}
@@ -358,18 +361,36 @@ export default function Skills() {
           })}
         </motion.div>
 
-        {/* Grid */}
-        <AnimatePresence mode="wait">
+        {/* Tab content box — notebook box dari skill 2 */}
+        <div style={{
+          background: 'rgba(0,29,61,0.3)',
+          border: '2px solid rgba(255,195,0,0.15)',
+          borderRadius: '0 12px 12px 12px',
+          padding: 'clamp(20px, 4vw, 40px)',
+          boxShadow: '4px 4px 0 rgba(255,195,0,0.06)',
+          position: 'relative',
+          marginBottom: '48px',
+        }}>
+          {/* Notebook hole punches — dari skill 2 */}
+          {[20, 50, 80].map((pct) => (
+            <svg key={pct} style={{
+              position: 'absolute', left: '-16px', top: `${pct}%`,
+              width: 14, height: 14, transform: 'translateY(-50%)',
+            }} viewBox="0 0 14 14" fill="none">
+              <circle cx="7" cy="7" r="5" stroke="rgba(255,195,0,0.2)" strokeWidth="1.5" />
+              <circle cx="7" cy="7" r="2" fill="rgba(0,11,24,0.8)" />
+            </svg>
+          ))}
+
           <motion.div
             key={activeTab}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.18 }}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fill, minmax(230px, 1fr))',
-              gap: '10px',
+              gap: '12px',
             }}
           >
             {activeCategory.skills.map((name, i) => (
@@ -378,12 +399,40 @@ export default function Skills() {
                 name={name}
                 color={activeCategory.color}
                 index={i}
+                inView={isInView}
               />
             ))}
           </motion.div>
-        </AnimatePresence>
+        </div>
+
+        {/* Doodle tags — dari skill 2 */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.6 }}
+          style={{
+            display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center',
+          }}
+        >
+          {['✦ Always Learning', '✦ Detail Oriented', '✦ Performance Focused', '✦ User Centered'].map((tag) => (
+            <motion.span
+              key={tag}
+              whileHover={{ rotate: -2, scale: 1.05 }}
+              style={{
+                background: 'rgba(255,195,0,0.05)',
+                border: '2px dashed rgba(255,195,0,0.2)',
+                borderRadius: '6px',
+                padding: '8px 18px',
+                fontFamily: "'Kalam', cursive",
+                fontSize: '14px',
+                color: 'rgba(139,163,199,0.8)',
+              }}
+            >{tag}</motion.span>
+          ))}
+        </motion.div>
 
       </div>
     </section>
   );
 }
+

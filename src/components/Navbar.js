@@ -2,7 +2,7 @@
 
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 
 const navLinks = [
@@ -12,6 +12,19 @@ const navLinks = [
   { label: 'Projects', href: '#projects' },
   { label: 'Contact', href: '#contact' },
 ];
+
+/* Squiggly SVG underline for active link */
+const Squiggle = ({ color = '#FFC300' }) => (
+  <svg
+    style={{ position: 'absolute', bottom: '-4px', left: 0, width: '100%', height: '6px' }}
+    viewBox="0 0 60 6" preserveAspectRatio="none" fill="none"
+  >
+    <path
+      d="M0 3 Q7.5 0 15 3 Q22.5 6 30 3 Q37.5 0 45 3 Q52.5 6 60 3"
+      stroke={color} strokeWidth="2" strokeLinecap="round"
+    />
+  </svg>
+);
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -23,12 +36,10 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 50);
-
-      // Active section detection
       const sections = navLinks.map(l => l.href.replace('#', ''));
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i]);
-        if (el && window.scrollY >= el.offsetTop - 100) {
+        if (el && window.scrollY >= el.offsetTop - 120) {
           setActiveSection(sections[i]);
           break;
         }
@@ -39,29 +50,35 @@ export default function Navbar() {
   }, []);
 
   const scrollTo = (href) => {
-    const id = href.replace('#', '');
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
+    const el = document.getElementById(href.replace('#', ''));
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
     setMenuOpen(false);
   };
 
   return (
     <>
-      {/* Scroll Progress Bar */}
-      <motion.div
-        style={{
-          position: 'fixed',
-          top: 0, left: 0, right: 0,
-          height: '2px',
-          background: 'linear-gradient(90deg, #FFC300, #219EBC)',
-          transformOrigin: '0%',
-          scaleX,
-          zIndex: 10001,
-          boxShadow: '0 0 8px rgba(255,195,0,0.6)',
-        }}
-      />
+      {/* Doodle progress bar — hand-drawn style */}
+      <div style={{
+        position: 'fixed', top: 0, left: 0, right: 0,
+        height: '6px', zIndex: 10001, overflow: 'hidden',
+      }}>
+        <motion.div
+          style={{
+            height: '100%',
+            background: 'linear-gradient(90deg, #FFC300, #219EBC)',
+            transformOrigin: '0%',
+            scaleX,
+            borderRadius: '0 3px 3px 0',
+            boxShadow: '0 0 10px rgba(255,195,0,0.7)',
+          }}
+        />
+        {/* Doodle dash overlay */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 6px, rgba(0,0,0,0.15) 6px, rgba(0,0,0,0.15) 8px)',
+          pointerEvents: 'none',
+        }} />
+      </div>
 
       <motion.nav
         initial={{ y: -80, opacity: 0 }}
@@ -69,102 +86,110 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
         style={{
           position: 'fixed',
-          top: scrolled ? '8px' : '0',
-          left: scrolled ? '16px' : '0',
-          right: scrolled ? '16px' : '0',
+          top: scrolled ? '12px' : '6px',
+          left: scrolled ? '20px' : '0',
+          right: scrolled ? '20px' : '0',
           zIndex: 10000,
-          transition: 'all 0.4s cubic-bezier(0.76,0,0.24,1)',
-          borderRadius: scrolled ? '16px' : '0',
-          background: scrolled
-            ? 'rgba(0,13,30,0.85)'
-            : 'transparent',
-          backdropFilter: scrolled ? 'blur(20px)' : 'none',
-          WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
-          border: scrolled ? '1px solid rgba(255,195,0,0.1)' : 'none',
-          boxShadow: scrolled ? '0 8px 32px rgba(0,0,0,0.4)' : 'none',
+          transition: 'all 0.4s',
+          borderRadius: scrolled ? '12px' : '0',
+          background: scrolled ? 'rgba(0,11,24,0.88)' : 'transparent',
+          backdropFilter: scrolled ? 'blur(16px)' : 'none',
+          WebkitBackdropFilter: scrolled ? 'blur(16px)' : 'none',
+          /* doodle border when scrolled */
+          border: scrolled ? '2px solid rgba(255,195,0,0.25)' : 'none',
+          boxShadow: scrolled ? '4px 4px 0 rgba(255,195,0,0.08), -1px -1px 0 rgba(255,195,0,0.05)' : 'none',
         }}
       >
+        {/* Hand-drawn corner ticks when scrolled */}
+        {scrolled && (
+          <>
+            {[{ tl: true }, { tr: true }, { bl: true }, { br: true }].map((pos, i) => (
+              <svg key={i} style={{
+                position: 'absolute', width: 14, height: 14,
+                top: pos.tl || pos.tr ? -1 : undefined,
+                bottom: pos.bl || pos.br ? -1 : undefined,
+                left: pos.tl || pos.bl ? -1 : undefined,
+                right: pos.tr || pos.br ? -1 : undefined,
+                transform: pos.tr ? 'scaleX(-1)' : pos.br ? 'scale(-1)' : pos.bl ? 'scaleY(-1)' : 'none',
+              }} viewBox="0 0 14 14" fill="none">
+                <path d="M1 7 L1 1 L7 1" stroke="#FFC300" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.5" />
+              </svg>
+            ))}
+          </>
+        )}
+
         <div style={{
-          maxWidth: '1280px',
-          margin: '0 auto',
-          padding: '16px 24px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
+          maxWidth: '1280px', margin: '0 auto',
+          padding: '14px 24px',
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         }}>
           {/* Logo */}
           <motion.button
             onClick={() => scrollTo('#home')}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ rotate: -2, scale: 1.05 }}
+            whileTap={{ scale: 0.93 }}
             style={{
-              background: 'none',
-              border: 'none',
-              fontFamily: "'Syne', sans-serif",
-              fontSize: '24px',
-              fontWeight: 800,
-              letterSpacing: '0.15em',
-              color: '#F0F4F8',
-              textShadow: '0 0 20px rgba(255,195,0,0.4)',
-              cursor: 'none',
+              background: 'none', border: 'none',
+              fontFamily: "'Permanent Marker', cursive",
+              fontSize: '28px', fontWeight: 400,
+              color: '#F0F4F8', cursor: 'none',
+              letterSpacing: '0.04em',
+              textShadow: '2px 2px 0 rgba(255,195,0,0.3)',
+              position: 'relative',
             }}
           >
-            <span style={{ color: 'var(--accent-gold)' }}>M</span>SR 
-            {/* ganti sama logo */}
+            <span style={{ color: '#FFC300' }}>M</span>
+            <span style={{ color: '#219EBC' }}>S</span>R
           </motion.button>
 
           {/* Desktop Links */}
-          <div style={{
-            display: 'flex',
-            gap: '8px',
-            alignItems: 'center',
-          }}
-            className="nav-desktop"
-          >
+          <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }} className="nav-desktop">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.replace('#', '');
               return (
                 <motion.button
                   key={link.href}
                   onClick={() => scrollTo(link.href)}
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ y: -2, rotate: -1 }}
                   whileTap={{ scale: 0.95 }}
                   style={{
-                    background: isActive ? 'rgba(255,195,0,0.1)' : 'none',
-                    border: isActive ? '1px solid rgba(255,195,0,0.3)' : '1px solid transparent',
-                    borderRadius: '8px',
-                    padding: '8px 16px',
-                    fontFamily: "'Space Grotesk', sans-serif",
-                    fontSize: '14px',
-                    fontWeight: isActive ? 600 : 400,
-                    color: isActive ? 'var(--accent-gold)' : 'var(--text-muted)',
+                    background: isActive ? 'rgba(255,195,0,0.08)' : 'none',
+                    border: 'none',
+                    borderRadius: '6px',
+                    padding: '8px 18px',
+                    fontFamily: "'Kalam', cursive",
+                    fontSize: '16px',
+                    fontWeight: isActive ? 700 : 400,
+                    color: isActive ? '#FFC300' : 'rgba(240,244,248,0.7)',
                     cursor: 'none',
-                    transition: 'all 0.2s',
-                    textShadow: isActive ? '0 0 10px rgba(255,195,0,0.4)' : 'none',
-                    letterSpacing: '0.02em',
+                    position: 'relative',
+                    transition: 'all 0.15s',
                   }}
                 >
                   {link.label}
+                  {isActive && <Squiggle />}
                 </motion.button>
               );
             })}
 
             <motion.button
               onClick={() => scrollTo('#intern-history')}
-              whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(255,195,0,0.4)' }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ rotate: 1, scale: 1.04, boxShadow: '5px 5px 0 rgba(255,195,0,0.3)' }}
+              whileTap={{ scale: 0.94 }}
               style={{
-                marginLeft: '8px',
-                background: 'linear-gradient(135deg, #FFC300, #FFD60A)',
-                border: 'none',
-                borderRadius: '8px',
-                padding: '10px 20px',
-                fontFamily: "'Space Grotesk', sans-serif",
-                fontSize: '14px',
-                fontWeight: 600,
+                marginLeft: '12px',
+                background: '#FFC300',
+                border: '2px solid rgba(255,195,0,0.8)',
+                borderRadius: '6px',
+                padding: '10px 22px',
+                fontFamily: "'Kalam', cursive",
+                fontSize: '16px',
+                fontWeight: 700,
                 color: '#001D3D',
                 cursor: 'none',
-                letterSpacing: '0.02em',
+                /* offset shadow = doodle button effect */
+                boxShadow: '3px 3px 0 rgba(255,195,0,0.3)',
+                transition: 'all 0.15s',
               }}
             >
               Intern History
@@ -178,22 +203,17 @@ export default function Navbar() {
             className="nav-mobile"
             style={{
               background: 'none',
-              border: '1px solid rgba(255,195,0,0.2)',
+              border: '2px solid rgba(255,195,0,0.3)',
               borderRadius: '8px',
-              padding: '10px',
+              width: '44px', height: '44px',
               cursor: 'auto',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '5px',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '44px',
-              height: '44px',
+              display: 'flex', flexDirection: 'column',
+              gap: '5px', alignItems: 'center', justifyContent: 'center',
+              boxShadow: '2px 2px 0 rgba(255,195,0,0.1)',
             }}
           >
             {[0, 1, 2].map((i) => (
-              <motion.span
-                key={i}
+              <motion.span key={i}
                 animate={menuOpen ? {
                   rotate: i === 1 ? 0 : i === 0 ? 45 : -45,
                   y: i === 1 ? 0 : i === 0 ? 7 : -7,
@@ -201,9 +221,10 @@ export default function Navbar() {
                 } : { rotate: 0, y: 0, opacity: 1 }}
                 transition={{ duration: 0.2 }}
                 style={{
-                  width: '20px',
+                  /* each line slightly imperfect length */
+                  width: i === 1 ? '14px' : i === 0 ? '20px' : '16px',
                   height: '2px',
-                  backgroundColor: 'var(--accent-gold)',
+                  backgroundColor: '#FFC300',
                   borderRadius: '2px',
                   display: 'block',
                 }}
@@ -217,49 +238,42 @@ export default function Navbar() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -16, rotate: -1 }}
+            animate={{ opacity: 1, y: 0, rotate: 0 }}
+            exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.25 }}
             style={{
-              position: 'fixed',
-              top: '80px',
-              left: '16px',
-              right: '16px',
-              background: 'rgba(0,13,30,0.95)',
-              backdropFilter: 'blur(20px)',
-              WebkitBackdropFilter: 'blur(20px)',
-              border: '1px solid rgba(255,195,0,0.15)',
-              borderRadius: '16px',
+              position: 'fixed', top: '80px', left: '20px', right: '20px',
+              background: 'rgba(0,11,24,0.96)',
+              backdropFilter: 'blur(16px)',
+              border: '2px solid rgba(255,195,0,0.25)',
+              borderRadius: '12px',
               padding: '16px',
               zIndex: 9999,
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '4px',
+              display: 'flex', flexDirection: 'column', gap: '4px',
+              boxShadow: '4px 4px 0 rgba(255,195,0,0.1)',
             }}
           >
             {navLinks.map((link, i) => (
               <motion.button
                 key={link.href}
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -16 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.05 }}
+                transition={{ delay: i * 0.06 }}
                 onClick={() => scrollTo(link.href)}
                 style={{
                   background: activeSection === link.href.replace('#', '') ? 'rgba(255,195,0,0.1)' : 'none',
                   border: 'none',
-                  borderRadius: '10px',
-                  padding: '14px 16px',
-                  textAlign: 'left',
-                  fontFamily: "'Space Grotesk', sans-serif",
-                  fontSize: '16px',
-                  fontWeight: 500,
-                  color: activeSection === link.href.replace('#', '') ? 'var(--accent-gold)' : 'var(--text-primary)',
-                  cursor: 'auto',
-                  width: '100%',
+                  borderRadius: '8px',
+                  padding: '14px 16px', textAlign: 'left',
+                  fontFamily: "'Kalam', cursive",
+                  fontSize: '18px',
+                  fontWeight: activeSection === link.href.replace('#', '') ? 700 : 400,
+                  color: activeSection === link.href.replace('#', '') ? '#FFC300' : '#F0F4F8',
+                  cursor: 'auto', width: '100%',
                 }}
               >
-                {link.label}
+                {activeSection === link.href.replace('#', '') ? '→ ' : '   '}{link.label}
               </motion.button>
             ))}
           </motion.div>
@@ -267,19 +281,11 @@ export default function Navbar() {
       </AnimatePresence>
 
       <style jsx global>{`
-        .nav-desktop {
-          display: flex;
-        }
-        .nav-mobile {
-          display: none;
-        }
+        .nav-desktop { display: flex; }
+        .nav-mobile { display: none; }
         @media (max-width: 768px) {
-          .nav-desktop {
-            display: none !important;
-          }
-          .nav-mobile {
-            display: flex !important;
-          }
+          .nav-desktop { display: none !important; }
+          .nav-mobile { display: flex !important; }
         }
       `}</style>
     </>

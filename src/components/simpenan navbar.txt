@@ -1,0 +1,22 @@
+<motion.button
+              onClick={() => scrollTo('#intern-history')}
+              whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(255,195,0,0.4)' }}
+              whileTap={{ scale: 0.95 }}
+              style={{
+                marginLeft: '8px',
+                background: 'linear-gradient(135deg, #FFC300, #FFD60A)',
+                border: 'none',
+                borderRadius: '8px',
+                padding: '10px 20px',
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: '14px',
+                fontWeight: 600,
+                color: '#001D3D',
+                cursor: 'none',
+                letterSpacing: '0.02em',
+              }}
+            >
+              Intern History
+            </motion.button>
+
+            dibawah label
