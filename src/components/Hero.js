@@ -8,7 +8,7 @@ import dynamic from 'next/dynamic';
 
 const ThreeCanvas = dynamic(() => import('./HeroCanvas'), { ssr: false });
 
-const roles = ['Laravel Developer', 'Frontend Developer', 'UI Designer'];
+const roles = ['Laravel Developer', 'Back-end Developer', 'Software Engineer'];
 
 /* Hand-drawn arrow */
 const DoodleArrow = () => (
@@ -246,43 +246,7 @@ export default function Hero() {
         maxWidth: '960px', width: '100%',
       }}>
 
-        {/* Portfolio badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 16, rotate: -4 }}
-          animate={{ opacity: 1, y: 0, rotate: -1.5 }}
-          transition={{ delay: 0.25, duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
-          style={{
-            display: 'inline-flex', alignItems: 'center', gap: '8px',
-            background: 'rgba(33,158,188,0.07)',
-            border: '2px solid rgba(33,158,188,0.28)',
-            borderRadius: '6px',
-            padding: '5px 20px',
-            marginBottom: '40px',
-            boxShadow: '3px 3px 0 rgba(33,158,188,0.1)',
-          }}
-        >
-          {/* Pulsing dot */}
-          <span style={{ position: 'relative', width: 8, height: 8, display: 'inline-block' }}>
-            <motion.span
-              animate={{ scale: [1, 1.8, 1], opacity: [0.8, 0, 0.8] }}
-              transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-              style={{
-                position: 'absolute', inset: 0,
-                borderRadius: '50%', background: '#219EBC',
-              }}
-            />
-            <span style={{
-              position: 'absolute', inset: '1px',
-              borderRadius: '50%', background: '#219EBC',
-            }} />
-          </span>
-          <span style={{
-            fontFamily: "'Kalam', cursive",
-            fontSize: '14px',
-            color: '#219EBC',
-            letterSpacing: '0.06em',
-          }}>Portofolio 2025</span>
-        </motion.div>
+       
 
         {/* Name with doodle brackets */}
         <motion.div
@@ -307,7 +271,7 @@ export default function Hero() {
             textShadow: '4px 4px 0 rgba(0,0,0,0.35), 0 0 60px rgba(255,195,0,0.06)',
             margin: 0,
           }}>
-            <TypewriterText text="Muhammad Sultan Rafi" />
+            <TypewriterText text="Halloo, i'm Rafi" />
           </h1>
 
           <DoodleBracket side="right" color="rgba(255,195,0,0.38)" size={84} />

@@ -108,7 +108,7 @@ export default function Footer() {
             fontFamily: "'Patrick Hand', cursive", fontSize: '11px',
             color: 'rgba(255,255,255,0.1)', marginTop: '3px',
           }}>
-            Handcrafted with ✏️ & ☕
+            Handcrafted with ❤️ Finger
           </div>
         </div>
       </div>
