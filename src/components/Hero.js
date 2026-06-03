@@ -271,7 +271,7 @@ export default function Hero() {
             textShadow: '4px 4px 0 rgba(0,0,0,0.35), 0 0 60px rgba(255,195,0,0.06)',
             margin: 0,
           }}>
-            <TypewriterText text="Halloo, i'm Rafi" />
+            <TypewriterText text="Hai, i'm Rafi" />
           </h1>
 
           <DoodleBracket side="right" color="rgba(255,195,0,0.38)" size={84} />
