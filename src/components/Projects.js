@@ -31,9 +31,9 @@ const projects = [
     description:
       "Rumahnya Anak Sekolah (RAS) is a modern digital platform designed specifically for students, it serves as a Student Lifestyle Marketplace, where students can shop, eat, connect, and grow within a community built around school life.",
     category: "Web",
-    stack: ["Laravel", "Ajax JS","Node.js", "PHP", "PostgreSQL", "Bootstrap", "REST API"],
-    demo: "#",
-    github: "#",
+    stack: ["Laravel", "Ajax JS", "Node.js", "PHP", "PostgreSQL", "Bootstrap", "REST API"],
+    demo: "https://rumah-sekolah.up.railway.app",
+    github: "https://github.com/Asulll-edan/project-web-iseng",
     featured: true,
     color: "#219EBC",
     icon: (
@@ -56,49 +56,31 @@ const projects = [
     featured: false,
     color: "#FFC300",
     emoji: "📋",
+    inDev: true,
   },
   {
     id: 4,
-    title: "Portfolio Generator",
+    title: "Smart moneybox",
     description:
-      "AI-powered portfolio website generator. Input your info, get a stunning responsive portfolio in seconds.",
-    category: "Web",
-    stack: ["Next.js", "OpenAI", "Tailwind"],
-    demo: "#",
-    github: "#",
+      "An IoT-enabled smart moneybox that tracks savings goals, provides real-time feedback, and encourages financial discipline through gamification.",
+    category: "Arduino",
+    stack: ["Arduino C++", "MQTT", "TCS3200", "ESP8266", "Node.js"],
+    demo: null,
+    github: null,
     featured: false,
-    color: "#219EBC",
-    emoji: "🤖",
-  },
-  {
-    id: 5,
-    title: "Real Estate Dashboard",
-    description:
-      "Data-rich analytics dashboard for real estate agents with interactive maps, property comparisons, and market trend visualizations.",
-    category: "UI/UX",
-    stack: ["React", "D3.js", "Mapbox", "Recharts"],
-    demo: "#",
-    github: "#",
-    featured: false,
-    color: "#FFD60A",
-    emoji: "🏠",
-  },
-  {
-    id: 6,
-    title: "Fitness Tracker",
-    description:
-      "Health and fitness tracking app with workout plans, nutrition logging, progress charts and wearable device sync.",
-    category: "Mobile",
-    stack: ["React Native", "Redux", "HealthKit"],
-    demo: "#",
-    github: "#",
-    featured: false,
-    color: "#4CC9F0",
-    emoji: "💪",
+    color: "#FFC300",
+    icon: (
+      <img
+        src="/assets/icons/keren-removebg-preview.png"
+        alt="Smart Moneybox"
+        style={{ width: 60, height: 60, objectFit: "contain" }}
+      />
+    ),
+    inDev: true,
   },
 ];
 
-const categories = ["All", "Web", "Mobile", "UI/UX"];
+const categories = ["All", "Web", "Mobile", "UI/UX", "Arduino"];
 
 /* Doodle pin for cards */
 const DoodlePin = ({ color }) => (
@@ -268,48 +250,103 @@ function ProjectCard({ project, index, isInView, onClick }) {
 
       {/* Links */}
       <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
-        <a
-          href={project.demo}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={(e) => e.stopPropagation()}
-          style={{
-            fontFamily: "'Kalam', cursive",
-            fontSize: "14px",
-            fontWeight: 700,
-            color: project.color,
-            textDecoration: "none",
-            cursor: "none",
-          }}
-        >
-          ↗ Demo
-        </a>
-        <a
-          href={project.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={(e) => e.stopPropagation()}
-          style={{
-            fontFamily: "'Kalam', cursive",
-            fontSize: "14px",
-            color: "rgba(240,244,248,0.5)",
-            textDecoration: "none",
-            cursor: "none",
-          }}
-        >
-          GitHub →
-        </a>
-        <span
-          style={{
-            marginLeft: "auto",
-            fontFamily: "'Kalam', cursive",
-            fontSize: "12px",
-            color: "rgba(255,255,255,0.2)",
-          }}
-        >
-          tap for details ✦
-        </span>
+        {project.demo && (
+          <a
+            href={project.demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              fontFamily: "'Kalam', cursive",
+              fontSize: "14px",
+              fontWeight: 700,
+              color: project.color,
+              textDecoration: "none",
+              cursor: "none",
+            }}
+          >
+            ↗ Demo
+          </a>
+        )}
+        {project.github && (
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              fontFamily: "'Kalam', cursive",
+              fontSize: "14px",
+              color: "rgba(240,244,248,0.5)",
+              textDecoration: "none",
+              cursor: "none",
+            }}
+          >
+            GitHub →
+          </a>
+        )}
+        {!project.inDev && (
+          <span
+            style={{
+              marginLeft: "auto",
+              fontFamily: "'Kalam', cursive",
+              fontSize: "12px",
+              color: "rgba(255,255,255,0.2)",
+            }}
+          >
+            tap for details ✦
+          </span>
+        )}
       </div>
+
+      {/* In-dev glassmorphism overlay */}
+      {project.inDev && (
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            borderRadius: "8px",
+            background: "rgba(0, 10, 28, 0.62)",
+            backdropFilter: "blur(6px)",
+            WebkitBackdropFilter: "blur(6px)",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "10px",
+            zIndex: 5,
+          }}
+        >
+          <div
+            style={{
+              fontFamily: "'Permanent Marker', cursive",
+              fontSize: "24px",
+              color: "#FFC300",
+              border: "2.5px solid #FFC300",
+              borderRadius: "6px",
+              padding: "6px 20px",
+              transform: "rotate(-8deg)",
+              letterSpacing: "0.06em",
+              textTransform: "uppercase",
+              background: "rgba(0,15,35,0.5)",
+              boxShadow: "3px 3px 0 rgba(255,195,0,0.15)",
+              textShadow: "1px 1px 0 rgba(0,0,0,0.4)",
+            }}
+          >
+            In Dev
+          </div>
+          <span
+            style={{
+              fontFamily: "'Patrick Hand', cursive",
+              fontSize: "13px",
+              color: "rgba(139,163,199,0.75)",
+              transform: "rotate(-1deg)",
+            }}
+          >
+            masih di develop yaa
+          </span>
+        </div>
+      )}
 
       {/* Hand-drawn corner ticks on hover */}
       {hovered && (
@@ -425,7 +462,7 @@ function ProjectModal({ project, onClose }) {
         >
           <div>
             <div style={{ fontSize: "48px", marginBottom: "12px" }}>
-              {project.emoji}
+              {project.icon || project.emoji}
             </div>
             <div
               style={{
@@ -501,49 +538,53 @@ function ProjectModal({ project, onClose }) {
               ))}
             </div>
             <div style={{ display: "flex", gap: "12px" }}>
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  flex: 1,
-                  background: project.color,
-                  border: `2px solid ${project.color}`,
-                  borderRadius: "8px",
-                  padding: "14px",
-                  fontFamily: "'Kalam', cursive",
-                  fontSize: "15px",
-                  fontWeight: 700,
-                  color: "#001D3D",
-                  textDecoration: "none",
-                  textAlign: "center",
-                  cursor: "none",
-                  boxShadow: `3px 3px 0 ${project.color}44`,
-                }}
-              >
-                ↗ Live Demo
-              </a>
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  flex: 1,
-                  background: "rgba(0,53,102,0.4)",
-                  border: "2px solid rgba(255,195,0,0.2)",
-                  borderRadius: "8px",
-                  padding: "14px",
-                  fontFamily: "'Kalam', cursive",
-                  fontSize: "15px",
-                  color: "#F0F4F8",
-                  textDecoration: "none",
-                  textAlign: "center",
-                  cursor: "none",
-                  boxShadow: "3px 3px 0 rgba(255,195,0,0.08)",
-                }}
-              >
-                GitHub →
-              </a>
+              {project.demo && (
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    flex: 1,
+                    background: project.color,
+                    border: `2px solid ${project.color}`,
+                    borderRadius: "8px",
+                    padding: "14px",
+                    fontFamily: "'Kalam', cursive",
+                    fontSize: "15px",
+                    fontWeight: 700,
+                    color: "#001D3D",
+                    textDecoration: "none",
+                    textAlign: "center",
+                    cursor: "none",
+                    boxShadow: `3px 3px 0 ${project.color}44`,
+                  }}
+                >
+                  ↗ Live Demo
+                </a>
+              )}
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    flex: 1,
+                    background: "rgba(0,53,102,0.4)",
+                    border: "2px solid rgba(255,195,0,0.2)",
+                    borderRadius: "8px",
+                    padding: "14px",
+                    fontFamily: "'Kalam', cursive",
+                    fontSize: "15px",
+                    color: "#F0F4F8",
+                    textDecoration: "none",
+                    textAlign: "center",
+                    cursor: "none",
+                    boxShadow: "3px 3px 0 rgba(255,195,0,0.08)",
+                  }}
+                >
+                  GitHub →
+                </a>
+              )}
             </div>
           </div>
         </div>
@@ -706,7 +747,7 @@ export default function Projects() {
                 project={project}
                 index={i}
                 isInView={isInView}
-                onClick={() => setSelectedProject(project)}
+                onClick={() => !project.inDev && setSelectedProject(project)}
               />
             ))}
           </AnimatePresence>

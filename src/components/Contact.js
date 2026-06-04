@@ -199,8 +199,7 @@ export default function Contact() {
             margin: "20px auto 0",
             lineHeight: 1.7,
           }}>
-            Have a project in mind? I'd love to hear about it. Send me a message
-            and let's create something remarkable together.
+            Punya ide atau proyek seru yang ingin dibangun bareng? Atau cuma mau meet santai aja? Gaskeunnn aja kita kontakan!
           </p>
         </motion.div>
 
