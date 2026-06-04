@@ -126,7 +126,7 @@ export default function Navbar() {
           {/* Logo */}
           <motion.button
   onClick={() => scrollTo('#home')}
-  whileHover={{ rotate: 0.5, scale: 1.08 }}
+  whileHover={{ rotate: 0.5, scale: 1 }}
   whileTap={{ scale: 0.93 }}
   style={{
     background: 'none', border: 'none',
@@ -145,7 +145,7 @@ export default function Navbar() {
       src="/assets/images/msr.png"
       alt="MSR"
       style={{
-       maxWidth: '17%',
+       width: '17%',
         height: '17%',
         objectFit: 'contain',
       }}
