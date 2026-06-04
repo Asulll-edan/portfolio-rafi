@@ -156,8 +156,8 @@ export default function Navbar() {
       src="/assets/images/msr.png"
       alt="MSR"
       style={{
-        width: '42px',
-        height: '42px',
+        width: '56px',
+height: '56px',
         objectFit: 'contain',
       }}
     />
