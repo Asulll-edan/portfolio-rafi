@@ -5,8 +5,8 @@ export const metadata = {
   title: 'Rafi Portfolio',
   description: 'Portfolio Muhammad Sultan Rafi — Fullstack Developer, Back end coder, Laravel',
   icons: {
-    icon: '/assets/images/msr.png',
-    apple: '/assets/images/msr.png',
+    icon: '/favicon.ico',
+    apple: '/favicon.ico',
   },
 };
 
