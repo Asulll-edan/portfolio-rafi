@@ -126,7 +126,7 @@ export default function Navbar() {
           {/* Logo */}
           <motion.button
   onClick={() => scrollTo('#home')}
-  whileHover={{ rotate: -2, scale: 1.08 }}
+  whileHover={{ rotate: 0.5, scale: 1.08 }}
   whileTap={{ scale: 0.93 }}
   style={{
     background: 'none', border: 'none',
