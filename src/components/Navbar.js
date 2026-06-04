@@ -125,22 +125,61 @@ export default function Navbar() {
         }}>
           {/* Logo */}
           <motion.button
-            onClick={() => scrollTo('#home')}
-            whileHover={{ rotate: -2, scale: 1.05 }}
-            whileTap={{ scale: 0.93 }}
-            style={{
-              background: 'none', border: 'none',
-              fontFamily: "'Permanent Marker', cursive",
-              fontSize: '28px', fontWeight: 400,
-              color: '#F0F4F8', cursor: 'none',
-              letterSpacing: '0.04em',
-              textShadow: '2px 2px 0 rgba(255,195,0,0.3)',
-              position: 'relative',
-            }}
-          >
-            <span style={{ color: '#FFC300' }}>M</span>
-            <span style={{ color: '#219EBC' }}>S</span>R
-          </motion.button>
+  onClick={() => scrollTo('#home')}
+  whileHover={{ rotate: -2, scale: 1.08 }}
+  whileTap={{ scale: 0.93 }}
+  style={{
+    background: 'none', border: 'none',
+    cursor: 'none', position: 'relative',
+    padding: 0,
+  }}
+>
+  <motion.div
+    initial={{ filter: 'brightness(0.7) drop-shadow(0 0 0px #FFC300)' }}
+    whileHover={{
+      filter: 'brightness(1.3) drop-shadow(0 0 12px #FFC300)',
+    }}
+    animate={{
+      filter: [
+        'brightness(0.85) drop-shadow(0 0 4px rgba(255,195,0,0.3))',
+        'brightness(1.15) drop-shadow(0 0 10px rgba(255,195,0,0.7))',
+        'brightness(0.85) drop-shadow(0 0 4px rgba(255,195,0,0.3))',
+      ],
+    }}
+    transition={{
+      animate: { duration: 3, repeat: Infinity, ease: 'easeInOut' },
+      whileHover: { duration: 0.3 },
+    }}
+    style={{ display: 'flex', alignItems: 'center' }}
+  >
+    <img
+      src="/assets/images/msr.png"
+      alt="MSR"
+      style={{
+        width: '42px',
+        height: '42px',
+        objectFit: 'contain',
+      }}
+    />
+  </motion.div>
+
+  {/* Glow ring animasi di belakang logo */}
+  <motion.div
+    animate={{
+      opacity: [0.3, 0.7, 0.3],
+      scale: [0.9, 1.15, 0.9],
+    }}
+    transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+    style={{
+      position: 'absolute',
+      inset: '-6px',
+      borderRadius: '50%',
+      background: 'radial-gradient(circle, rgba(255,195,0,0.15) 0%, transparent 70%)',
+      pointerEvents: 'none',
+      zIndex: -1,
+    }}
+  />
+</motion.button>
 
           {/* Desktop Links */}
           <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }} className="nav-desktop">

@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="id">
       <head>
-        <link rel="icon" href="/favicon.ico" />
+<link rel="icon" href="/assets/images/msr.png" />
       </head>
       <body>
         <ClientLayout>{children}</ClientLayout>
