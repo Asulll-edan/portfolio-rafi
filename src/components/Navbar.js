@@ -135,17 +135,6 @@ export default function Navbar() {
   }}
 >
   <motion.div
-    initial={{ filter: 'brightness(0.7) drop-shadow(0 0 0px #FFC300)' }}
-    whileHover={{
-      filter: 'brightness(1.3) drop-shadow(0 0 12px #FFC300)',
-    }}
-    animate={{
-      filter: [
-        'brightness(0.85) drop-shadow(0 0 4px rgba(255,195,0,0.3))',
-        'brightness(1.15) drop-shadow(0 0 10px rgba(255,195,0,0.7))',
-        'brightness(0.85) drop-shadow(0 0 4px rgba(255,195,0,0.3))',
-      ],
-    }}
     transition={{
       animate: { duration: 3, repeat: Infinity, ease: 'easeInOut' },
       whileHover: { duration: 0.3 },
