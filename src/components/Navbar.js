@@ -144,14 +144,14 @@ export default function Navbar() {
     style={{ display: 'flex', alignItems: 'center' }}
   >
     <img
-      src="/assets/images/msr.png"
-      alt="MSR"
-      style={{
-       width: '17%',
-        height: '17%',
-        objectFit: 'contain',
-      }}
-    />
+  src="/assets/images/msr.png"
+  alt="MSR"
+  style={{
+    width: '48px',
+    height: '48px',
+    objectFit: 'contain',
+  }}
+/>
   </motion.div>
 
   {/* Glow ring animasi di belakang logo */}
