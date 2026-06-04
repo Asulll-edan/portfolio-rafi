@@ -105,8 +105,7 @@ export default function LoadingScreen({ onFinish }) {
           <DoodleStar x="5%" y="75%" size={18} color="#219EBC" rotate={30} delay={0.7} />
           <DoodleStar x="90%" y="80%" size={24} color="#FFC300" rotate={-10} delay={0.4} />
           <DoodleCircle x={80} y={80} r={40} color="rgba(255,195,0,0.2)" delay={0.2} />
-          <DoodleCircle x={window?.innerWidth - 80 || 300} y={window?.innerHeight - 80 || 500} r={55} color="rgba(33,158,188,0.2)" delay={0.4} />
-
+          <DoodleCircle x={300} y={500} r={55} color="rgba(33,158,188,0.2)" delay={0.4} />
           {/* Squiggly lines */}
           <motion.svg
             initial={{ pathLength: 0, opacity: 0 }}
