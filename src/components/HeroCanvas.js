@@ -45,13 +45,28 @@ export default function HeroCanvas() {
     particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     particleGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
-    const particleMat = new THREE.PointsMaterial({
-      size: isMobile ? 0.04 : 0.06,
-      vertexColors: true,
-      transparent: true,
-      opacity: 0.7,
-      sizeAttenuation: true,
-    });
+    const canvas = document.createElement('canvas');
+canvas.width = 64; canvas.height = 64;
+const ctx = canvas.getContext('2d');
+const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+gradient.addColorStop(0, 'rgba(255,255,255,1)');
+gradient.addColorStop(1, 'rgba(255,255,255,0)');
+ctx.fillStyle = gradient;
+ctx.beginPath();
+ctx.arc(32, 32, 32, 0, Math.PI * 2);
+ctx.fill();
+const particleTex = new THREE.CanvasTexture(canvas);
+
+const particleMat = new THREE.PointsMaterial({
+  size: isMobile ? 0.08 : 0.12,
+  vertexColors: true,
+  transparent: true,
+  opacity: 0.8,
+  sizeAttenuation: true,
+  map: particleTex,
+  alphaTest: 0.01,
+  depthWrite: false,
+});
 
     const particles = new THREE.Points(particleGeo, particleMat);
     scene.add(particles);
@@ -105,9 +120,15 @@ export default function HeroCanvas() {
       animId = requestAnimationFrame(animate);
       frame++;
 
-      // Rotate particles gently
-      particles.rotation.y += 0.0005;
-      particles.rotation.x += 0.0002;
+      // Rotate particle
+const positions = particleGeo.attributes.position.array;
+for (let i = 0; i < PARTICLE_COUNT; i++) {
+  positions[i * 3 + 1] += 0.005; // naik ke atas
+  if (positions[i * 3 + 1] > 10) {
+    positions[i * 3 + 1] = -10; // reset ke bawah
+  }
+}
+particleGeo.attributes.position.needsUpdate = true;
 
       // Lerp camera to mouse
       camera.position.x += (mouseX - camera.position.x) * 0.03;

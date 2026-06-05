@@ -209,3 +209,32 @@ body::before {
   }
 }
  
+/* ─── GRADIENT FLOW BACKGROUND ─────────────────── */
+
+#home {
+  background: linear-gradient(180deg, #000B18 0%, #001324 100%) !important;
+}
+
+#about {
+  background: linear-gradient(180deg, #001324 0%, #001D3D 100%) !important;
+}
+
+#skills {
+  background: linear-gradient(180deg, #001D3D 0%, #002a52 100%) !important;
+}
+
+#projects {
+  background: linear-gradient(180deg, #002a52 0%, #003566 100%) !important;
+}
+
+#intern-history {
+  background: linear-gradient(180deg, #003566 0%, #004080 100%) !important;
+}
+
+#contact {
+  background: linear-gradient(180deg, #004080 0%, #003566 100%) !important;
+}
+
+footer, #footer {
+  background: linear-gradient(180deg, #003566 0%, #000B18 100%) !important;
+}

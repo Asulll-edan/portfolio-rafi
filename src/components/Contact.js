@@ -394,7 +394,7 @@ export default function Contact() {
                 {
                   icon: <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#FF0000"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" /></svg>,
                   label: "Location",
-                  value: "Indonesia",
+                  value: "Bandung, Indonesia",
                 },
                 {
                   icon: <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#219EBC"><path d="M2 5.5A2.5 2.5 0 0 1 4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5v-13zm2.4-.5L12 11l7.6-6H4.4zM20 7.2l-7.37 5.82a1 1 0 0 1-1.26 0L4 7.2v11.3a.5.5 0 0 0 .5.5h15a.5.5 0 0 0 .5-.5V7.2z" /></svg>,

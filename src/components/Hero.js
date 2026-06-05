@@ -118,7 +118,8 @@ export default function Hero() {
     <section id="home" ref={ref} style={{
       position: 'relative', minHeight: '100vh',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
-      overflow: 'hidden', background: '#001324',
+      overflow: 'hidden',
+      background: 'linear-gradient(180deg, #001324 0%, #001d3d 60%, #003566 100%)',
     }}>
 
       {/* SVG turbulence filter for sketchy lines */}
@@ -165,8 +166,8 @@ export default function Hero() {
       </Float>
 
       {/* Top-right: star */}
-      <Float x="87%" y="9%" delay={0.6} dur={3.8}>
-        <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+<Float x="82%" y="6%" delay={0.6} dur={3.8}>
+          <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
           <path d="M26 4 L30 19 L45 19 L33 29 L37 44 L26 35 L15 44 L19 29 L7 19 L22 19 Z"
             stroke="rgba(33,158,188,0.4)" strokeWidth="2" strokeLinejoin="round"
             fill="rgba(33,158,188,0.06)" />
@@ -183,8 +184,8 @@ export default function Hero() {
       </Float>
 
       {/* Right-mid: smaller star */}
-      <Float x="89%" y="68%" delay={0.5} dur={4.5}>
-        <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+<Float x="80%" y="62%" delay={0.5} dur={4.5}>
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
           <path d="M22 4 L25 14 L35 14 L27 21 L30 31 L22 25 L14 31 L17 21 L9 14 L19 14 Z"
             stroke="rgba(255,195,0,0.32)" strokeWidth="1.8"
             fill="rgba(255,195,0,0.05)" />
@@ -200,8 +201,8 @@ export default function Hero() {
       </Float>
 
       {/* Bottom-right: triangle */}
-      <Float x="84%" y="85%" delay={0.8} dur={4.0}>
-        <svg width="36" height="32" viewBox="0 0 36 32" fill="none">
+<Float x="78%" y="80%" delay={0.8} dur={4.0}>
+          <svg width="36" height="32" viewBox="0 0 36 32" fill="none">
           <path d="M18 3 L34 29 L2 29 Z"
             stroke="rgba(33,158,188,0.28)" strokeWidth="1.8" strokeLinejoin="round"
             fill="rgba(33,158,188,0.04)" />
