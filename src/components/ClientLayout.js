@@ -80,10 +80,12 @@ export default function ClientLayout({ children }) {
   }, [loaded]);
 
   return (
-    <>
-    <GlobalParticles />
+  <>
+    <div style={{ position: 'relative' }}>
+      <GlobalParticles />
       <LoadingScreen onFinish={() => setLoaded(true)} />
       {loaded && children}
-    </>
-  );
+    </div>
+  </>
+);
 }

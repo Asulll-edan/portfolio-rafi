@@ -11,38 +11,51 @@ export default function GlobalParticles() {
     const ctx = canvas.getContext('2d');
     let animId;
 
+    const getPageHeight = () => Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight
+    );
+
     const resize = () => {
       canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      canvas.height = getPageHeight();
     };
-    resize();
+
+    // Tunggu konten load dulu
+    setTimeout(resize, 500);
     window.addEventListener('resize', resize);
 
     const isMobile = window.innerWidth < 768;
-    const COUNT = isMobile ? 40 : 100;
+    const COUNT = isMobile ? 60 : 150;
 
-    const particles = Array.from({ length: COUNT }, () => ({
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
-      size: Math.random() * 2 + 0.5,
-      speedY: -(Math.random() * 0.5 + 0.2),
-      speedX: (Math.random() - 0.5) * 0.15,
-      opacity: Math.random() * 0.6 + 0.1,
-      color: Math.random() > 0.5 ? '#FFC300' : '#219EBC',
-    }));
+    const initParticles = () => {
+      const h = getPageHeight();
+      return Array.from({ length: COUNT }, () => ({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * h,
+        size: Math.random() * 2 + 0.5,
+        speedY: -(Math.random() * 0.6 + 0.2),
+        speedX: (Math.random() - 0.5) * 0.15,
+        opacity: Math.random() * 0.5 + 0.15,
+        color: Math.random() > 0.5 ? '#FFC300' : '#219EBC',
+      }));
+    };
 
-    const cubes = isMobile ? [] : Array.from({ length: 6 }, () => ({
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
-      size: 20 + Math.random() * 40,
-      rot: Math.random() * Math.PI,
-      rotSpeed: (Math.random() - 0.5) * 0.006,
-      color: Math.random() > 0.5 ? 'rgba(255,195,0,0.12)' : 'rgba(33,158,188,0.12)',
-      floatY: Math.random() * Math.PI * 2,
-      floatSpeed: 0.008 + Math.random() * 0.008,
-      driftX: (Math.random() - 0.5) * 0.3,
-      driftY: (Math.random() - 0.5) * 0.3,
-    }));
+    let particles = initParticles();
+
+    const cubes = isMobile ? [] : (() => {
+      const h = getPageHeight();
+      return Array.from({ length: 8 }, () => ({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * h,
+        size: 20 + Math.random() * 40,
+        rot: Math.random() * Math.PI,
+        rotSpeed: (Math.random() - 0.5) * 0.006,
+        color: Math.random() > 0.5 ? 'rgba(255,195,0,0.1)' : 'rgba(33,158,188,0.1)',
+        floatY: Math.random() * Math.PI * 2,
+        floatSpeed: 0.008 + Math.random() * 0.008,
+      }));
+    })();
 
     const drawCube = (x, y, size, rot, color) => {
       ctx.save();
@@ -53,11 +66,7 @@ export default function GlobalParticles() {
       ctx.strokeRect(-size / 2, -size / 2, size, size);
       const off = size * 0.35;
       ctx.strokeRect(-size / 2 + off, -size / 2 - off, size, size);
-      const corners = [
-        [-size/2, -size/2], [size/2, -size/2],
-        [size/2, size/2],   [-size/2, size/2],
-      ];
-      corners.forEach(([cx, cy]) => {
+      [[-size/2,-size/2],[size/2,-size/2],[size/2,size/2],[-size/2,size/2]].forEach(([cx,cy]) => {
         ctx.beginPath();
         ctx.moveTo(cx, cy);
         ctx.lineTo(cx + off, cy - off);
@@ -67,30 +76,30 @@ export default function GlobalParticles() {
     };
 
     const animate = () => {
+      const h = getPageHeight();
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+      // Cubes
       cubes.forEach((c) => {
         c.rot += c.rotSpeed;
         c.floatY += c.floatSpeed;
-        c.x += c.driftX;
-        c.y += c.driftY;
-        if (c.x < -100) c.x = window.innerWidth + 100;
-        if (c.x > window.innerWidth + 100) c.x = -100;
-        if (c.y < -100) c.y = window.innerHeight + 100;
-        if (c.y > window.innerHeight + 100) c.y = -100;
         drawCube(c.x, c.y + Math.sin(c.floatY) * 6, c.size, c.rot, c.color);
       });
 
+      // Particles naik dari bawah ke atas
       particles.forEach((p) => {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fillStyle = p.color;
         ctx.globalAlpha = p.opacity;
         ctx.fill();
+
         p.y += p.speedY;
         p.x += p.speedX;
+
+        // Reset ke paling bawah halaman
         if (p.y < -10) {
-          p.y = window.innerHeight + 10;
+          p.y = h + 10;
           p.x = Math.random() * window.innerWidth;
         }
         if (p.x < 0) p.x = window.innerWidth;
@@ -113,12 +122,13 @@ export default function GlobalParticles() {
     <canvas
       ref={canvasRef}
       style={{
-        position: 'fixed',
-        top: 0, left: 0,
-        width: '100%', height: '100%',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
         pointerEvents: 'none',
         zIndex: 0,
-        opacity: 0.8,
+        opacity: 0.7,
       }}
     />
   );
