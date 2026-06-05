@@ -58,27 +58,6 @@ export default function Navbar() {
   return (
     <>
       {/* Doodle progress bar — hand-drawn style */}
-      <div style={{
-        position: 'fixed', top: 0, left: 0, right: 0,
-        height: '6px', zIndex: 10001, overflow: 'hidden',
-      }}>
-        <motion.div
-          style={{
-            height: '100%',
-            background: 'linear-gradient(90deg, #FFC300, #219EBC)',
-            transformOrigin: '0%',
-            scaleX,
-            borderRadius: '0 3px 3px 0',
-            boxShadow: '0 0 10px rgba(255,195,0,0.7)',
-          }}
-        />
-        {/* Doodle dash overlay */}
-        <div style={{
-          position: 'absolute', inset: 0,
-          backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 6px, rgba(0,0,0,0.15) 6px, rgba(0,0,0,0.15) 8px)',
-          pointerEvents: 'none',
-        }} />
-      </div>
 
       <motion.nav
         initial={{ y: -80, opacity: 0 }}
