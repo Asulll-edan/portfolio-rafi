@@ -80,24 +80,6 @@ export default function ClientLayout({ children }) {
 
   return (
     <>
-      <div ref={cursorDotRef} style={{
-        position: 'fixed', top: 0, left: 0,
-        width: '8px', height: '8px',
-        borderRadius: '50%',
-        backgroundColor: 'var(--accent-gold)',
-        pointerEvents: 'none', zIndex: 99999,
-        opacity: 0, transition: 'transform 0.05s linear',
-        willChange: 'transform',
-      }} />
-      <div ref={cursorRingRef} style={{
-        position: 'fixed', top: 0, left: 0,
-        width: '40px', height: '40px',
-        borderRadius: '50%',
-        border: '1.5px solid var(--accent-gold)',
-        pointerEvents: 'none', zIndex: 99998,
-        opacity: 0, transition: 'width 0.2s, height 0.2s, border-color 0.2s',
-        willChange: 'transform',
-      }} />
       <LoadingScreen onFinish={() => setLoaded(true)} />
       {loaded && children}
     </>
