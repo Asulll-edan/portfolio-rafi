@@ -232,9 +232,9 @@ body::before {
 }
 
 #contact {
-  background: linear-gradient(180deg, #004080 0%, #003566 100%) !important;
+  background: linear-gradient(180deg, #004080 0%, #003d78 100%) !important;
 }
 
 footer, #footer {
-  background: linear-gradient(180deg, #003566 0%, #000B18 100%) !important;
+  background: linear-gradient(180deg, #003d78 0%, #003566 100%) !important;
 }

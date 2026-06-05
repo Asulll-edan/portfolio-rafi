@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import LoadingScreen from '@/components/LoadingScreen';
+import GlobalParticles from '@/components/GlobalParticles';
 
 export default function ClientLayout({ children }) {
   const cursorDotRef = useRef(null);
@@ -80,6 +81,7 @@ export default function ClientLayout({ children }) {
 
   return (
     <>
+    <GlobalParticles />
       <LoadingScreen onFinish={() => setLoaded(true)} />
       {loaded && children}
     </>
