@@ -97,7 +97,7 @@ export default function Contact() {
     border: `2px solid ${focusedField === field ? "rgba(255,195,0,0.45)" : "rgba(255,195,0,0.12)"}`,
     borderRadius: "8px",
     padding: "13px 16px",
-    fontFamily: "'Patrick Hand', cursive",
+    fontFamily: "'Patrick Hand', Arial, sans-serif",
     fontSize: "15px",
     color: "#F0F4F8",
     outline: "none",
@@ -120,7 +120,7 @@ export default function Contact() {
       {/* Big watermark */}
       <div style={{
         position: "absolute", top: "5%", right: "3%",
-        fontFamily: "'Permanent Marker', cursive",
+        fontFamily: "'Permanent Marker', Arial, sans-serif",
         fontSize: "clamp(100px, 18vw, 180px)",
         color: "rgba(255,195,0,0.04)",
         userSelect: "none", pointerEvents: "none", lineHeight: 1,
@@ -167,14 +167,14 @@ export default function Contact() {
           style={{ textAlign: "center", marginBottom: "72px" }}
         >
           <span style={{
-            fontFamily: "'Kalam', cursive",
+            fontFamily: "'Kalam', Arial, sans-serif",
             fontSize: "15px",
             color: "#219EBC",
             letterSpacing: "0.15em",
           }}>✏️ 05 / Contact</span>
 
           <h2 style={{
-            fontFamily: "'Permanent Marker', cursive",
+            fontFamily: "'Permanent Marker', Arial, sans-serif",
             fontSize: "clamp(30px, 5vw, 54px)",
             color: "#F0F4F8",
             marginTop: "8px",
@@ -191,7 +191,7 @@ export default function Contact() {
           </h2>
 
           <p style={{
-            fontFamily: "'Patrick Hand', cursive",
+            fontFamily: "'Patrick Hand', Arial, sans-serif",
             fontSize: "clamp(14px, 2vw, 17px)",
             color: "rgba(240,244,248,0.65)",
             marginTop: "20px",
@@ -222,7 +222,7 @@ export default function Contact() {
               <div>
                 <label style={{
                   display: "block",
-                  fontFamily: "'Kalam', cursive",
+                  fontFamily: "'Kalam', Arial, sans-serif",
                   fontSize: "13px",
                   color: "#219EBC",
                   letterSpacing: "0.08em",
@@ -241,7 +241,7 @@ export default function Contact() {
               <div>
                 <label style={{
                   display: "block",
-                  fontFamily: "'Kalam', cursive",
+                  fontFamily: "'Kalam', Arial, sans-serif",
                   fontSize: "13px",
                   color: "#219EBC",
                   letterSpacing: "0.08em",
@@ -260,7 +260,7 @@ export default function Contact() {
               <div>
                 <label style={{
                   display: "block",
-                  fontFamily: "'Kalam', cursive",
+                  fontFamily: "'Kalam', Arial, sans-serif",
                   fontSize: "13px",
                   color: "#219EBC",
                   letterSpacing: "0.08em",
@@ -297,7 +297,7 @@ export default function Contact() {
                     : "2px solid rgba(255,195,0,0.35)",
                   borderRadius: "8px",
                   padding: "15px",
-                  fontFamily: "'Kalam', cursive",
+                  fontFamily: "'Kalam', Arial, sans-serif",
                   fontSize: "16px",
                   fontWeight: 700,
                   color:
@@ -383,7 +383,7 @@ export default function Contact() {
               ))}
 
               <h3 style={{
-                fontFamily: "'Permanent Marker', cursive",
+                fontFamily: "'Permanent Marker', Arial, sans-serif",
                 fontSize: "20px",
                 color: "#F0F4F8",
                 marginBottom: "20px",
@@ -415,14 +415,14 @@ export default function Contact() {
                   <span>{item.icon}</span>
                   <div>
                     <div style={{
-                      fontFamily: "'Kalam', cursive",
+                      fontFamily: "'Kalam', Arial, sans-serif",
                       fontSize: "11px",
                       color: "#219EBC",
                       letterSpacing: "0.1em",
                       textTransform: "uppercase",
                     }}>{item.label}</div>
                     <div style={{
-                      fontFamily: "'Patrick Hand', cursive",
+                      fontFamily: "'Patrick Hand', Arial, sans-serif",
                       fontSize: "14px",
                       color: "#F0F4F8",
                       fontWeight: 600,
@@ -435,7 +435,7 @@ export default function Contact() {
             {/* Socials */}
             <div>
               <span style={{
-                fontFamily: "'Kalam', cursive",
+                fontFamily: "'Kalam', Arial, sans-serif",
                 fontSize: "13px",
                 color: "#219EBC",
                 letterSpacing: "0.15em",
@@ -466,7 +466,7 @@ export default function Contact() {
                   >
                     <span style={{ color: social.color }}>{social.icon}</span>
                     <span style={{
-                      fontFamily: "'Patrick Hand', cursive",
+                      fontFamily: "'Patrick Hand', Arial, sans-serif",
                       fontSize: "14px",
                       fontWeight: 600,
                       color: "#F0F4F8",
@@ -492,7 +492,7 @@ export default function Contact() {
                     border: "2px dashed rgba(255,195,0,0.2)",
                     borderRadius: "6px",
                     padding: "7px 14px",
-                    fontFamily: "'Kalam', cursive",
+                    fontFamily: "'Kalam', Arial, sans-serif",
                     fontSize: "13px",
                     color: "rgba(139,163,199,0.8)",
                   }}

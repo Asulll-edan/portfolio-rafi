@@ -186,7 +186,7 @@ export default function LoadingScreen({ onFinish }) {
                 animate={letters[i] ? { opacity: 1, y: 0, rotate: i === 1 ? -2 : i === 0 ? 1 : 2 } : {}}
                 transition={{ type: 'spring', stiffness: 200, damping: 12 }}
                 style={{
-                  fontFamily: "'Permanent Marker', cursive",
+                  fontFamily: "'Permanent Marker', Arial, sans-serif",
                   fontSize: 'clamp(60px, 14vw, 110px)',
                   fontWeight: 400,
                   color: i === 0 ? '#FFC300' : i === 1 ? '#F0F4F8' : '#219EBC',
@@ -227,7 +227,7 @@ export default function LoadingScreen({ onFinish }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.1, duration: 0.5 }}
             style={{
-              fontFamily: "'Kalam', cursive",
+              fontFamily: "'Kalam', Arial, sans-serif",
               fontSize: 'clamp(12px, 2.5vw, 16px)',
               color: 'rgba(139,163,199,0.8)',
               letterSpacing: '0.15em',
@@ -287,12 +287,12 @@ export default function LoadingScreen({ onFinish }) {
               marginTop: '18px',
             }}>
               <span style={{
-                fontFamily: "'Kalam', cursive",
+                fontFamily: "'Kalam', Arial, sans-serif",
                 fontSize: '13px',
                 color: 'rgba(255,195,0,0.5)',
               }}>drawing...</span>
               <span style={{
-                fontFamily: "'Permanent Marker', cursive",
+                fontFamily: "'Permanent Marker', Arial, sans-serif",
                 fontSize: '16px',
                 color: '#FFC300',
               }}>{progress}%</span>

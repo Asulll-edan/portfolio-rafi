@@ -109,7 +109,7 @@ function DoneCard({ intern, index, isInView }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.03, duration: 0.22 }}
               style={{
-                fontFamily: "'Permanent Marker', cursive",
+                fontFamily: "'Permanent Marker', Arial, sans-serif",
                 fontSize: '16px',
                 color: '#F0F4F8',
                 lineHeight: 1.3,
@@ -124,7 +124,7 @@ function DoneCard({ intern, index, isInView }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.07, duration: 0.22 }}
               style={{
-                fontFamily: "'Patrick Hand', cursive",
+                fontFamily: "'Patrick Hand', Arial, sans-serif",
                 fontSize: '14px',
                 color: '#FFC300',
                 fontWeight: 700,
@@ -138,7 +138,7 @@ function DoneCard({ intern, index, isInView }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.11, duration: 0.22 }}
               style={{
-                fontFamily: "'Kalam', cursive",
+                fontFamily: "'Kalam', Arial, sans-serif",
                 fontSize: '12px',
                 color: 'rgba(240,244,248,0.55)',
                 letterSpacing: '0.04em',
@@ -152,7 +152,7 @@ function DoneCard({ intern, index, isInView }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.14, duration: 0.22 }}
               style={{
-                fontFamily: "'Kalam', cursive",
+                fontFamily: "'Kalam', Arial, sans-serif",
                 fontSize: '11px',
                 color: 'rgba(240,244,248,0.4)',
               }}
@@ -173,7 +173,7 @@ function DoneCard({ intern, index, isInView }) {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.2 + i * 0.06, duration: 0.18 }}
                   style={{
-                    fontFamily: "'Kalam', cursive",
+                    fontFamily: "'Kalam', Arial, sans-serif",
                     fontSize: '11px',
                     padding: '3px 10px',
                     borderRadius: '6px',
@@ -233,7 +233,7 @@ function SoonCard({ index, isInView }) {
       </motion.div>
 
       <span style={{
-        fontFamily: "'Kalam', cursive",
+        fontFamily: "'Kalam', Arial, sans-serif",
         fontSize: '10px',
         color: 'rgba(240,244,248,0.4)',
         letterSpacing: '0.2em',
@@ -243,7 +243,7 @@ function SoonCard({ index, isInView }) {
       </span>
 
       <span style={{
-        fontFamily: "'Patrick Hand', cursive",
+        fontFamily: "'Patrick Hand', Arial, sans-serif",
         fontSize: '14px',
         color: 'rgba(240,244,248,0.4)',
       }}>
@@ -271,7 +271,7 @@ export default function InternHistory() {
       {/* Big watermark */}
       <div style={{
         position: 'absolute', top: '5%', right: '3%',
-        fontFamily: "'Permanent Marker', cursive",
+        fontFamily: "'Permanent Marker', Arial, sans-serif",
         fontSize: 'clamp(100px, 18vw, 180px)',
         color: 'rgba(255,195,0,0.04)',
         userSelect: 'none', pointerEvents: 'none', lineHeight: 1,
@@ -317,14 +317,14 @@ export default function InternHistory() {
           style={{ marginBottom: '56px' }}
         >
           <span style={{
-            fontFamily: "'Kalam', cursive",
+            fontFamily: "'Kalam', Arial, sans-serif",
             fontSize: '15px',
             color: '#219EBC',
             letterSpacing: '0.15em',
           }}>✏️ 04 / Experience</span>
 
           <h2 style={{
-            fontFamily: "'Permanent Marker', cursive",
+            fontFamily: "'Permanent Marker', Arial, sans-serif",
             fontSize: 'clamp(30px, 5vw, 54px)',
             color: '#F0F4F8',
             marginTop: '8px',

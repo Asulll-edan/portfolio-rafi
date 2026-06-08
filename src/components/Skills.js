@@ -222,7 +222,7 @@ function SkillCard({ name, color, index, inView }) {
 
       {/* Name — font dari skill 2 */}
       <span style={{
-        fontFamily: "'Patrick Hand', cursive",
+        fontFamily: "'Patrick Hand', Arial, sans-serif",
         fontSize: '15px',
         fontWeight: hovered ? 700 : 400,
         color: hovered ? '#F0F4F8' : 'rgba(240,244,248,0.75)',
@@ -269,7 +269,7 @@ export default function Skills() {
       {/* Big watermark — dari skill 2 */}
       <div style={{
         position: 'absolute', top: '5%', left: '2%',
-        fontFamily: "'Permanent Marker', cursive",
+        fontFamily: "'Permanent Marker', Arial, sans-serif",
         fontSize: 'clamp(100px, 18vw, 180px)',
         color: 'rgba(33,158,188,0.04)',
         userSelect: 'none', pointerEvents: 'none', lineHeight: 1,
@@ -302,13 +302,13 @@ export default function Skills() {
           style={{ marginBottom: '52px' }}
         >
           <span style={{
-            fontFamily: "'Kalam', cursive",
+            fontFamily: "'Kalam', Arial, sans-serif",
             fontSize: '15px',
             color: '#219EBC',
             letterSpacing: '0.15em',
           }}>✏️ 02 / Skills</span>
           <h2 style={{
-            fontFamily: "'Permanent Marker', cursive",
+            fontFamily: "'Permanent Marker', Arial, sans-serif",
             fontSize: 'clamp(30px, 5vw, 54px)',
             color: '#F0F4F8',
             marginTop: '8px',
@@ -345,7 +345,7 @@ export default function Skills() {
                   border: `2px solid ${isActive ? cat.color : 'rgba(255,255,255,0.08)'}`,
                   borderRadius: '8px 8px 0 0',
                   padding: '10px 20px',
-                  fontFamily: "'Kalam', cursive",
+                  fontFamily: "'Kalam', Arial, sans-serif",
                   fontSize: '15px',
                   fontWeight: isActive ? 700 : 400,
                   color: isActive ? '#001D3D' : 'rgba(240,244,248,0.6)',
@@ -423,7 +423,7 @@ export default function Skills() {
                 border: '2px dashed rgba(255,195,0,0.2)',
                 borderRadius: '6px',
                 padding: '8px 18px',
-                fontFamily: "'Kalam', cursive",
+                fontFamily: "'Kalam', Arial, sans-serif",
                 fontSize: '14px',
                 color: 'rgba(139,163,199,0.8)',
               }}

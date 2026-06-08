@@ -83,7 +83,7 @@ function TypewriterText({ text }) {
         transition={{ repeat: Infinity, duration: 0.55, ease: "linear" }}
         style={{
           color: "#FFC300",
-          fontFamily: "'Permanent Marker', cursive",
+          fontFamily: "'Permanent Marker', Arial, sans-serif",
           marginLeft: "2px",
         }}
       >
@@ -389,7 +389,7 @@ export default function Hero() {
 
           <h1
             style={{
-              fontFamily: "'Permanent Marker', cursive",
+              fontFamily: "'Permanent Marker', Arial, sans-serif",
               fontSize: "clamp(28px, 6.5vw, 76px)",
               fontWeight: 400,
               color: "#F0F4F8",
@@ -443,7 +443,7 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.65, duration: 0.5 }}
           style={{
-            fontFamily: "'Kalam', cursive",
+            fontFamily: "'Kalam', Arial, sans-serif",
             fontSize: "clamp(13px, 1.8vw, 16px)",
             color: "rgba(139,163,199,0.7)",
             letterSpacing: "0.08em",
@@ -500,7 +500,7 @@ export default function Hero() {
                 }}
                 transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
                 style={{
-                  fontFamily: "'Kalam', cursive",
+                  fontFamily: "'Kalam', Arial, sans-serif",
                   fontSize: "clamp(14px, 2.2vw, 20px)",
                   fontWeight: isActive ? 700 : 400,
                   color: c.text,
@@ -548,7 +548,7 @@ export default function Hero() {
               border: "2px solid #FFC300",
               borderRadius: "8px",
               padding: "14px 34px",
-              fontFamily: "'Permanent Marker', cursive",
+              fontFamily: "'Permanent Marker', Arial, sans-serif",
               fontSize: "clamp(15px, 2vw, 18px)",
               color: "#001324",
               cursor: "none",
@@ -578,7 +578,7 @@ export default function Hero() {
               border: "2px solid rgba(33,158,188,0.45)",
               borderRadius: "8px",
               padding: "14px 34px",
-              fontFamily: "'Kalam', cursive",
+              fontFamily: "'Kalam', Arial, sans-serif",
               fontSize: "clamp(15px, 2vw, 19px)",
               fontWeight: 700,
               color: "#F0F4F8",
@@ -616,7 +616,7 @@ export default function Hero() {
               transition={{ delay: 2.4 + i * 0.12 }}
               whileHover={{ rotate: -2, scale: 1.05 }}
               style={{
-                fontFamily: "'Kalam', cursive",
+                fontFamily: "'Kalam', Arial, sans-serif",
                 fontSize: "12px",
                 color: "rgba(139,163,199,0.6)",
                 padding: "4px 14px",
@@ -650,7 +650,7 @@ export default function Hero() {
       >
         <span
           style={{
-            fontFamily: "'Kalam', cursive",
+            fontFamily: "'Kalam', Arial, sans-serif",
             fontSize: "12px",
             color: "rgba(255,255,255,0.25)",
             letterSpacing: "0.12em",

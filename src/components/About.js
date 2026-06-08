@@ -104,7 +104,7 @@ export default function About() {
       {/* Big doodle number watermark — style from about 2 */}
       <div style={{
         position: 'absolute', top: '5%', right: '3%',
-        fontFamily: "'Permanent Marker', cursive",
+        fontFamily: "'Permanent Marker', Arial, sans-serif",
         fontSize: 'clamp(100px, 18vw, 180px)',
         color: 'rgba(255,195,0,0.04)',
         userSelect: 'none', pointerEvents: 'none',
@@ -121,13 +121,13 @@ export default function About() {
           style={{ marginBottom: '60px' }}
         >
           <span style={{
-            fontFamily: "'Kalam', cursive",
+            fontFamily: "'Kalam', Arial, sans-serif",
             fontSize: '15px',
             color: '#219EBC',
             letterSpacing: '0.15em',
           }}>✏️ 01 / About Me</span>
           <h2 style={{
-            fontFamily: "'Permanent Marker', cursive",
+            fontFamily: "'Permanent Marker', Arial, sans-serif",
             fontSize: 'clamp(30px, 5vw, 54px)',
             color: '#F0F4F8',
             marginTop: '8px',
@@ -217,13 +217,13 @@ export default function About() {
                   }}
                 >
                   <div style={{
-                    fontFamily: "'Kalam', cursive",
+                    fontFamily: "'Kalam', Arial, sans-serif",
                     fontSize: '11px',
                     color: '#FFC300',
                     marginBottom: '2px',
                   }}>Things to do</div>
                   <div style={{
-                    fontFamily: "'Patrick Hand', cursive",
+                    fontFamily: "'Patrick Hand', Arial, sans-serif",
                     fontSize: '13px',
                     color: '#F0F4F8',
                     display: 'flex',
@@ -254,7 +254,7 @@ export default function About() {
                     borderRadius: '8px',
                     padding: '8px 14px',
                     boxShadow: '3px 3px 0 rgba(33,158,188,0.1)',
-                    fontFamily: "'Kalam', cursive",
+                    fontFamily: "'Kalam', Arial, sans-serif",
                     fontSize: '13px',
                     color: '#219EBC',
                   }}
@@ -275,7 +275,7 @@ export default function About() {
             <motion.p
               variants={itemVariants}
               style={{
-                fontFamily: "'Patrick Hand', cursive",
+                fontFamily: "'Patrick Hand', Arial, sans-serif",
                 fontSize: 'clamp(15px, 2vw, 18px)',
                 lineHeight: 1.75,
                 color: 'rgba(240,244,248,0.75)',
@@ -290,7 +290,7 @@ export default function About() {
             <motion.p
               variants={itemVariants}
               style={{
-                fontFamily: "'Patrick Hand', cursive",
+                fontFamily: "'Patrick Hand', Arial, sans-serif",
                 fontSize: 'clamp(15px, 2vw, 18px)',
                 lineHeight: 1.75,
                 color: 'rgba(240,244,248,0.75)',
@@ -364,7 +364,7 @@ export default function About() {
                     {item.icon}
                   </div>
                   <div style={{
-                    fontFamily: "'Kalam', cursive",
+                    fontFamily: "'Kalam', Arial, sans-serif",
                     fontSize: '11px',
                     color: 'rgba(139,163,199,0.8)',
                     letterSpacing: '0.05em',
@@ -391,7 +391,7 @@ export default function About() {
                   border: '2px solid rgba(255,195,0,0.3)',
                   borderRadius: '8px',
                   padding: '12px 24px',
-                  fontFamily: "'Kalam', cursive",
+                  fontFamily: "'Kalam', Arial, sans-serif",
                   fontSize: '16px',
                   fontWeight: 700,
                   color: '#FFC300',

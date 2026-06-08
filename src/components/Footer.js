@@ -57,7 +57,7 @@ export default function Footer() {
         {/* Logo */}
         <div>
           <div style={{
-            fontFamily: "'Permanent Marker', cursive",
+            fontFamily: "'Permanent Marker', Arial, sans-serif",
             fontSize: '32px', letterSpacing: '0.08em',
             lineHeight: 1, marginBottom: '6px',
             textShadow: '3px 3px 0 rgba(255,195,0,0.15)',
@@ -71,7 +71,7 @@ export default function Footer() {
             <path d="M0 5 Q13 1 26 5 Q39 9 52 5" stroke="rgba(255,195,0,0.4)" strokeWidth="2.5" strokeLinecap="round" />
           </svg>
           <p style={{
-            fontFamily: "'Kalam', cursive", fontSize: '12px',
+            fontFamily: "'Kalam', Arial, sans-serif", fontSize: '12px',
             color: 'rgba(255,255,255,0.2)', marginTop: '4px',
           }}>Muhammad Sultan Rafi</p>
         </div>
@@ -88,7 +88,7 @@ export default function Footer() {
               whileHover={{ y: -2, rotate: -1, color: '#FFC300' }}
               style={{
                 background: 'none', border: 'none',
-                fontFamily: "'Kalam', cursive", fontSize: '14px',
+                fontFamily: "'Kalam', Arial, sans-serif", fontSize: '14px',
                 color: 'rgba(255,255,255,0.3)',
                 cursor: 'none', transition: 'color 0.2s',
               }}
@@ -99,13 +99,13 @@ export default function Footer() {
         {/* Copyright */}
         <div style={{ textAlign: 'right' }}>
           <div style={{
-            fontFamily: "'Kalam', cursive", fontSize: '13px',
+            fontFamily: "'Kalam', Arial, sans-serif", fontSize: '13px',
             color: 'rgba(255,255,255,0.2)',
           }}>
             © 2025 Muhammad Sultan Rafi · MSR
           </div>
           <div style={{
-            fontFamily: "'Patrick Hand', cursive", fontSize: '11px',
+            fontFamily: "'Patrick Hand', Arial, sans-serif", fontSize: '11px',
             color: 'rgba(255,255,255,0.1)', marginTop: '3px',
           }}>
             Handcrafted with ❤️ Finger
@@ -133,7 +133,7 @@ export default function Footer() {
               cursor: 'none', zIndex: 1000,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               boxShadow: '4px 4px 0 rgba(255,195,0,0.25)',
-              fontFamily: "'Kalam', cursive",
+              fontFamily: "'Kalam', Arial, sans-serif",
             }}
           >↑</motion.button>
         )}

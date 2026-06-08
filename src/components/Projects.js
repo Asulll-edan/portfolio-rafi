@@ -153,7 +153,7 @@ function ProjectCard({ project, index, isInView, onClick }) {
             right: "-8px",
             background: project.color,
             padding: "3px 12px",
-            fontFamily: "'Kalam', cursive",
+            fontFamily: "'Kalam', Arial, sans-serif",
             fontSize: "11px",
             fontWeight: 700,
             color: "#001D3D",
@@ -180,7 +180,7 @@ function ProjectCard({ project, index, isInView, onClick }) {
       {/* Category label */}
       <div
         style={{
-          fontFamily: "'Kalam', cursive",
+          fontFamily: "'Kalam', Arial, sans-serif",
           fontSize: "12px",
           color: project.color,
           letterSpacing: "0.1em",
@@ -193,7 +193,7 @@ function ProjectCard({ project, index, isInView, onClick }) {
 
       <h3
         style={{
-          fontFamily: "'Permanent Marker', cursive",
+          fontFamily: "'Permanent Marker', Arial, sans-serif",
           fontSize: "clamp(17px,2.2vw,21px)",
           color: "#F0F4F8",
           marginBottom: "10px",
@@ -207,7 +207,7 @@ function ProjectCard({ project, index, isInView, onClick }) {
 
       <p
         style={{
-          fontFamily: "'Patrick Hand', cursive",
+          fontFamily: "'Patrick Hand', Arial, sans-serif",
           fontSize: "14px",
           color: "rgba(139,163,199,0.85)",
           lineHeight: 1.6,
@@ -238,7 +238,7 @@ function ProjectCard({ project, index, isInView, onClick }) {
               border: `1.5px solid ${project.color}33`,
               borderRadius: "20px",
               padding: "3px 10px",
-              fontFamily: "'Kalam', cursive",
+              fontFamily: "'Kalam', Arial, sans-serif",
               fontSize: "12px",
               color: project.color,
             }}
@@ -257,7 +257,7 @@ function ProjectCard({ project, index, isInView, onClick }) {
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
             style={{
-              fontFamily: "'Kalam', cursive",
+              fontFamily: "'Kalam', Arial, sans-serif",
               fontSize: "14px",
               fontWeight: 700,
               color: project.color,
@@ -275,7 +275,7 @@ function ProjectCard({ project, index, isInView, onClick }) {
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
             style={{
-              fontFamily: "'Kalam', cursive",
+              fontFamily: "'Kalam', Arial, sans-serif",
               fontSize: "14px",
               color: "rgba(240,244,248,0.5)",
               textDecoration: "none",
@@ -289,7 +289,7 @@ function ProjectCard({ project, index, isInView, onClick }) {
           <span
             style={{
               marginLeft: "auto",
-              fontFamily: "'Kalam', cursive",
+              fontFamily: "'Kalam', Arial, sans-serif",
               fontSize: "12px",
               color: "rgba(255,255,255,0.2)",
             }}
@@ -319,7 +319,7 @@ function ProjectCard({ project, index, isInView, onClick }) {
         >
           <div
             style={{
-              fontFamily: "'Permanent Marker', cursive",
+              fontFamily: "'Permanent Marker', Arial, sans-serif",
               fontSize: "24px",
               color: "#FFC300",
               border: "2.5px solid #FFC300",
@@ -337,7 +337,7 @@ function ProjectCard({ project, index, isInView, onClick }) {
           </div>
           <span
             style={{
-              fontFamily: "'Patrick Hand', cursive",
+              fontFamily: "'Patrick Hand', Arial, sans-serif",
               fontSize: "13px",
               color: "rgba(139,163,199,0.75)",
               transform: "rotate(-1deg)",
@@ -466,7 +466,7 @@ function ProjectModal({ project, onClose }) {
             </div>
             <div
               style={{
-                fontFamily: "'Kalam', cursive",
+                fontFamily: "'Kalam', Arial, sans-serif",
                 fontSize: "12px",
                 color: project.color,
                 letterSpacing: "0.15em",
@@ -478,7 +478,7 @@ function ProjectModal({ project, onClose }) {
             </div>
             <h3
               style={{
-                fontFamily: "'Permanent Marker', cursive",
+                fontFamily: "'Permanent Marker', Arial, sans-serif",
                 fontSize: "clamp(22px,4vw,34px)",
                 color: "#F0F4F8",
                 marginBottom: "16px",
@@ -489,7 +489,7 @@ function ProjectModal({ project, onClose }) {
             </h3>
             <p
               style={{
-                fontFamily: "'Patrick Hand', cursive",
+                fontFamily: "'Patrick Hand', Arial, sans-serif",
                 fontSize: "16px",
                 color: "rgba(240,244,248,0.75)",
                 lineHeight: 1.7,
@@ -501,7 +501,7 @@ function ProjectModal({ project, onClose }) {
           <div>
             <div
               style={{
-                fontFamily: "'Kalam', cursive",
+                fontFamily: "'Kalam', Arial, sans-serif",
                 fontSize: "12px",
                 color: "rgba(139,163,199,0.7)",
                 letterSpacing: "0.15em",
@@ -527,7 +527,7 @@ function ProjectModal({ project, onClose }) {
                     border: `2px solid ${project.color}44`,
                     borderRadius: "6px",
                     padding: "6px 14px",
-                    fontFamily: "'Kalam', cursive",
+                    fontFamily: "'Kalam', Arial, sans-serif",
                     fontSize: "13px",
                     color: project.color,
                     boxShadow: `2px 2px 0 ${project.color}11`,
@@ -549,7 +549,7 @@ function ProjectModal({ project, onClose }) {
                     border: `2px solid ${project.color}`,
                     borderRadius: "8px",
                     padding: "14px",
-                    fontFamily: "'Kalam', cursive",
+                    fontFamily: "'Kalam', Arial, sans-serif",
                     fontSize: "15px",
                     fontWeight: 700,
                     color: "#001D3D",
@@ -573,7 +573,7 @@ function ProjectModal({ project, onClose }) {
                     border: "2px solid rgba(255,195,0,0.2)",
                     borderRadius: "8px",
                     padding: "14px",
-                    fontFamily: "'Kalam', cursive",
+                    fontFamily: "'Kalam', Arial, sans-serif",
                     fontSize: "15px",
                     color: "#F0F4F8",
                     textDecoration: "none",
@@ -606,7 +606,7 @@ function ProjectModal({ project, onClose }) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            fontFamily: "'Kalam', cursive",
+            fontFamily: "'Kalam', Arial, sans-serif",
           }}
         >
           ✕
@@ -644,7 +644,7 @@ export default function Projects() {
           position: "absolute",
           top: "5%",
           right: "2%",
-          fontFamily: "'Permanent Marker', cursive",
+          fontFamily: "'Permanent Marker', Arial, sans-serif",
           fontSize: "clamp(100px,18vw,180px)",
           color: "rgba(255,195,0,0.04)",
           userSelect: "none",
@@ -664,7 +664,7 @@ export default function Projects() {
         >
           <span
             style={{
-              fontFamily: "'Kalam', cursive",
+              fontFamily: "'Kalam', Arial, sans-serif",
               fontSize: "15px",
               color: "#219EBC",
               letterSpacing: "0.15em",
@@ -674,7 +674,7 @@ export default function Projects() {
           </span>
           <h2
             style={{
-              fontFamily: "'Permanent Marker', cursive",
+              fontFamily: "'Permanent Marker', Arial, sans-serif",
               fontSize: "clamp(30px,5vw,54px)",
               color: "#F0F4F8",
               marginTop: "8px",
@@ -711,7 +711,7 @@ export default function Projects() {
                 border: `2px solid ${activeFilter === cat ? "rgba(255,195,0,0.5)" : "rgba(255,195,0,0.1)"}`,
                 borderRadius: "6px",
                 padding: "8px 22px",
-                fontFamily: "'Kalam', cursive",
+                fontFamily: "'Kalam', Arial, sans-serif",
                 fontSize: "15px",
                 fontWeight: activeFilter === cat ? 700 : 400,
                 color:
