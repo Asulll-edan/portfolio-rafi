@@ -122,8 +122,8 @@ const logos = {
 ),
   Docker: () => (
     <img
-    src="assets/icons/Docker_logo.png"
-    alt="AJAX"
+    src="assets/icons/Docker_Logo.png"
+    alt="Docker"
     style={{ width: 60, height: 40, objectFit: 'contain' }}
   />
   ),
