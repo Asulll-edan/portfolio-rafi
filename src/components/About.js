@@ -376,33 +376,6 @@ export default function About() {
               ))}
             </motion.div>
 
-            {/* Download CV — style from about 2 */}
-            <motion.div variants={itemVariants}>
-              <motion.a
-                href="/assets/cv.pdf"
-                download
-                whileHover={{ rotate: -1, scale: 1.03, boxShadow: '5px 5px 0 rgba(255,195,0,0.2)' }}
-                whileTap={{ scale: 0.97 }}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  background: 'rgba(0,53,102,0.3)',
-                  border: '2px solid rgba(255,195,0,0.3)',
-                  borderRadius: '8px',
-                  padding: '12px 24px',
-                  fontFamily: "'Kalam', Arial, sans-serif",
-                  fontSize: '16px',
-                  fontWeight: 700,
-                  color: '#FFC300',
-                  textDecoration: 'none',
-                  cursor: 'none',
-                  boxShadow: '3px 3px 0 rgba(255,195,0,0.1)',
-                }}
-              >
-                ✏️ Download CV
-              </motion.a>
-            </motion.div>
           </motion.div>
         </div>
       </div>
