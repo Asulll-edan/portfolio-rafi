@@ -1,6 +1,7 @@
 import './globals.css';
 import ClientLayout from '@/components/ClientLayout';
 import { Patrick_Hand, Caveat, Permanent_Marker, Kalam } from 'next/font/google';
+import { Analytics } from "@vercel/analytics/next";
 
 const patrickHand = Patrick_Hand({
   weight: '400',
@@ -44,6 +45,7 @@ export default function RootLayout({ children }) {
     <html lang="id">
       <body className={`${patrickHand.variable} ${caveat.variable} ${permanentMarker.variable} ${kalam.variable}`}>
         <ClientLayout>{children}</ClientLayout>
+        <Analytics />
       </body>
     </html>
   );
