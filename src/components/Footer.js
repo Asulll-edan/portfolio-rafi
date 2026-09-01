@@ -15,125 +15,178 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer style={{ backgroundColor: 'var(--footer-void)', position: 'relative', overflow: 'hidden' }}>
-      {/* Hand-drawn wavy top border */}
-      <svg
-        style={{ display: 'block', width: '100%', height: '30px', marginTop: '-1px' }}
-        viewBox="0 0 1440 30" preserveAspectRatio="none" fill="none"
-      >
-        <path
-          d="M0 20 Q180 5 360 20 Q540 35 720 20 Q900 5 1080 20 Q1260 35 1440 20 L1440 30 L0 30 Z"
-          fill="#000B18"
-        />
-        <path
-          d="M0 20 Q180 5 360 20 Q540 35 720 20 Q900 5 1080 20 Q1260 35 1440 20"
-          stroke="rgba(255,195,0,0.2)" strokeWidth="2" strokeLinecap="round"
-        />
-      </svg>
-
-      {/* Doodle scattered decorations */}
-      <svg style={{ position: 'absolute', top: '20%', left: '5%', width: 40, height: 40, opacity: 0.12, pointerEvents: 'none' }} viewBox="0 0 40 40" fill="none">
-        <path d="M20 4 L23 15 L34 15 L25 22 L28 33 L20 27 L12 33 L15 22 L6 15 L17 15 Z" stroke="#FFC300" strokeWidth="1.5" strokeLinejoin="round" />
-      </svg>
-      <svg style={{ position: 'absolute', top: '30%', right: '6%', width: 36, height: 36, opacity: 0.1, pointerEvents: 'none' }} viewBox="0 0 36 36" fill="none">
-        <rect x="2" y="2" width="32" height="32" rx="4" stroke="#219EBC" strokeWidth="1.5" strokeDasharray="4 3" transform="rotate(15 18 18)" />
-      </svg>
-
-      {/* Doodle horizontal squiggle divider */}
-      <svg style={{ display: 'block', width: '100%', height: '16px', margin: '0 auto' }} viewBox="0 0 1000 16" preserveAspectRatio="none" fill="none">
-        <path
-          d="M0 8 Q62.5 2 125 8 Q187.5 14 250 8 Q312.5 2 375 8 Q437.5 14 500 8 Q562.5 2 625 8 Q687.5 14 750 8 Q812.5 2 875 8 Q937.5 14 1000 8"
-          stroke="rgba(255,195,0,0.12)" strokeWidth="1.5" strokeLinecap="round"
-        />
-      </svg>
-
+    <footer style={{ 
+      backgroundColor: '#001324', 
+      position: 'relative',
+      borderTop: '1px solid var(--border-color)',
+    }}>
       <div style={{
-        maxWidth: '1280px', margin: '0 auto',
-        padding: '40px clamp(20px,5vw,80px) 32px',
-        display: 'flex', flexWrap: 'wrap',
-        alignItems: 'center', justifyContent: 'space-between',
-        gap: '24px',
+        maxWidth: '1280px', 
+        margin: '0 auto',
+        padding: '60px clamp(20px, 5vw, 80px) 32px',
       }}>
-        {/* Logo */}
-        <div>
-          <div style={{
-            fontFamily: "'Permanent Marker', Arial, sans-serif",
-            fontSize: '32px', letterSpacing: '0.08em',
-            lineHeight: 1, marginBottom: '6px',
-            textShadow: '3px 3px 0 rgba(255,195,0,0.15)',
-          }}>
-            <span style={{ color: '#FFC300' }}>M</span>
-            <span style={{ color: '#219EBC' }}>S</span>
-            <span style={{ color: '#F0F4F8' }}>R</span>
+        
+        {/* Main footer content */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gap: '40px',
+          marginBottom: '40px',
+        }}>
+          
+          {/* Brand */}
+          <div>
+            <div style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: '28px',
+              fontWeight: 700,
+              letterSpacing: '-0.02em',
+              marginBottom: '12px',
+            }}>
+              <span className="gradient-text">MSR</span>
+            </div>
+            <p style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: '14px',
+              color: 'var(--text-muted)',
+              lineHeight: 1.6,
+              maxWidth: '280px',
+            }}>
+              Building modern web applications with passion and precision.
+            </p>
           </div>
-          {/* Scribble underline */}
-          <svg style={{ width: '52px', height: '8px' }} viewBox="0 0 52 8" fill="none">
-            <path d="M0 5 Q13 1 26 5 Q39 9 52 5" stroke="rgba(255,195,0,0.4)" strokeWidth="2.5" strokeLinecap="round" />
-          </svg>
-          <p style={{
-            fontFamily: "'Kalam', Arial, sans-serif", fontSize: '12px',
-            color: 'rgba(255,255,255,0.2)', marginTop: '4px',
-          }}>Muhammad Sultan Rafi</p>
+
+          {/* Quick Links */}
+          <div>
+            <h3 style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: '14px',
+              fontWeight: 600,
+              color: 'var(--text-primary)',
+              marginBottom: '16px',
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em',
+            }}>Quick Links</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              {['Home', 'About', 'Skills', 'Projects', 'Contact'].map((link) => (
+                <motion.button
+                  key={link}
+                  onClick={() => {
+                    const el = document.getElementById(link.toLowerCase());
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  whileHover={{ x: 4, color: 'var(--accent-primary)' }}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '14px',
+                    color: 'var(--text-muted)',
+                    cursor: 'pointer',
+                    textAlign: 'left',
+                    transition: 'color 0.2s ease',
+                  }}
+                >{link}</motion.button>
+              ))}
+            </div>
+          </div>
+
+          {/* Connect */}
+          <div>
+            <h3 style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: '14px',
+              fontWeight: 600,
+              color: 'var(--text-primary)',
+              marginBottom: '16px',
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em',
+            }}>Connect</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              {[
+                { label: 'GitHub', href: 'https://github.com/Asulll-edan' },
+                { label: 'LinkedIn', href: 'https://www.linkedin.com/in/muhammad-sultan-rafi-6b263138a/' },
+                { label: 'Instagram', href: 'https://instagram.com/msrfi_' },
+                { label: 'Email', href: 'mailto:muhsulrafi32@gmail.com' },
+              ].map((item) => (
+                <motion.a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ x: 4, color: 'var(--accent-primary)' }}
+                  style={{
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '14px',
+                    color: 'var(--text-muted)',
+                    textDecoration: 'none',
+                    transition: 'color 0.2s ease',
+                  }}
+                >{item.label}</motion.a>
+              ))}
+            </div>
+          </div>
         </div>
 
-        {/* Nav links */}
-        <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
-          {['Home', 'About', 'Skills', 'Projects', 'Contact'].map((link) => (
-            <motion.button
-              key={link}
-              onClick={() => {
-                const el = document.getElementById(link.toLowerCase());
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
-              whileHover={{ y: -2, rotate: -1, color: '#FFC300' }}
-              style={{
-                background: 'none', border: 'none',
-                fontFamily: "'Kalam', Arial, sans-serif", fontSize: '14px',
-                color: 'rgba(255,255,255,0.3)',
-                cursor: 'none', transition: 'color 0.2s',
-              }}
-            >{link}</motion.button>
-          ))}
-        </div>
+        {/* Divider */}
+        <div style={{
+          height: '1px',
+          background: 'var(--border-color)',
+          marginBottom: '24px',
+        }} />
 
-        {/* Copyright */}
-        <div style={{ textAlign: 'right' }}>
+        {/* Bottom */}
+        <div style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          gap: '16px',
+        }}>
           <div style={{
-            fontFamily: "'Kalam', Arial, sans-serif", fontSize: '13px',
-            color: 'rgba(255,255,255,0.2)',
+            fontFamily: 'var(--font-body)',
+            fontSize: '14px',
+            color: 'var(--text-muted)',
           }}>
-            © 2025 Muhammad Sultan Rafi · MSR
+            © 2025 Muhammad Sultan Rafi. All rights reserved.
           </div>
           <div style={{
-            fontFamily: "'Patrick Hand', Arial, sans-serif", fontSize: '11px',
-            color: 'rgba(255,255,255,0.1)', marginTop: '3px',
+            fontFamily: 'var(--font-body)',
+            fontSize: '13px',
+            color: 'var(--text-muted)',
           }}>
-            Handcrafted with ❤️ Finger
+            Made with Green day's song in Bandung
           </div>
         </div>
       </div>
 
-      {/* Back to top — doodle pencil button */}
+      {/* Back to top button */}
       <AnimatePresence>
         {showTop && (
           <motion.button
-            initial={{ opacity: 0, y: 20, rotate: -10 }}
-            animate={{ opacity: 1, y: 0, rotate: 0 }}
-            exit={{ opacity: 0, y: 20, rotate: -10 }}
-            whileHover={{ scale: 1.1, rotate: -5, boxShadow: '5px 5px 0 rgba(255,195,0,0.3)' }}
-            whileTap={{ scale: 0.92 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             style={{
-              position: 'fixed', bottom: '32px', right: '24px',
-              width: '50px', height: '50px',
-              background: '#FFC300',
-              border: '2px solid rgba(255,195,0,0.8)',
-              borderRadius: '8px',
-              color: '#001D3D', fontSize: '22px',
-              cursor: 'none', zIndex: 1000,
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              boxShadow: '4px 4px 0 rgba(255,195,0,0.25)',
-              fontFamily: "'Kalam', Arial, sans-serif",
+              position: 'fixed',
+              bottom: '32px',
+              right: '32px',
+              width: '48px',
+              height: '48px',
+              background: 'var(--accent-primary)',
+              border: 'none',
+              borderRadius: '12px',
+              color: '#001D3D',
+              fontSize: '20px',
+              cursor: 'pointer',
+              zIndex: 1000,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 4px 12px rgba(255, 195, 0, 0.3)',
             }}
           >↑</motion.button>
         )}

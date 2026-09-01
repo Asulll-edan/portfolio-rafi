@@ -1,39 +1,23 @@
 import './globals.css';
 import ClientLayout from '@/components/ClientLayout';
-import { Patrick_Hand, Caveat, Permanent_Marker, Kalam } from 'next/font/google';
+import { Inter, Montserrat } from 'next/font/google';
 import { Analytics } from "@vercel/analytics/next";
 
-const patrickHand = Patrick_Hand({
-  weight: '400',
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-hand',
+  variable: '--font-body',
   display: 'swap',
 });
 
-const caveat = Caveat({
-  weight: ['400', '700'],
+const montserrat = Montserrat({
   subsets: ['latin'],
-  variable: '--font-doodle',
-  display: 'swap',
-});
-
-const permanentMarker = Permanent_Marker({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-marker',
-  display: 'swap',
-});
-
-const kalam = Kalam({
-  weight: ['400', '700'],
-  subsets: ['latin'],
-  variable: '--font-kalam',
+  variable: '--font-display',
   display: 'swap',
 });
 
 export const metadata = {
-  title: 'Rafi Portfolio',
-  description: 'Portfolio Muhammad Sultan Rafi — Fullstack Developer, Back end coder, Laravel',
+  title: 'Muhammad Sultan Rafi - Fullstack Developer',
+  description: 'Portfolio Muhammad Sultan Rafi — Fullstack Developer specializing in Laravel, Next.js, and modern web technologies',
   icons: {
     icon: '/favicon.ico',
     apple: '/favicon.ico',
@@ -43,7 +27,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="id">
-      <body className={`${patrickHand.variable} ${caveat.variable} ${permanentMarker.variable} ${kalam.variable}`}>
+      <body className={`${inter.variable} ${montserrat.variable}`}>
         <ClientLayout>{children}</ClientLayout>
         <Analytics />
       </body>

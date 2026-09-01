@@ -1,12 +1,8 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import LoadingScreen from '@/components/LoadingScreen';
-import GlobalParticles from '@/components/GlobalParticles';
+import { useEffect } from 'react';
 
 export default function ClientLayout({ children }) {
-  const [loaded, setLoaded] = useState(false);
-
   useEffect(() => {
     let lenis;
     const initLenis = async () => {
@@ -28,13 +24,9 @@ export default function ClientLayout({ children }) {
 
   return (
     <>
-      <LoadingScreen onFinish={() => setLoaded(true)} />
-      {loaded && (
-        <div style={{ position: 'relative' }}>
-          <GlobalParticles />
-          {children}
-        </div>
-      )}
+      <div style={{ position: 'relative' }}>
+        {children}
+      </div>
     </>
   );
 }
